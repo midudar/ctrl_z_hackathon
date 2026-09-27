@@ -76,9 +76,17 @@ TRAIN_data/                   data/ из TRAIN-архива: public_gold_checks.
 
   Поэтому стадию берём из реестра и шифра, а не из имени папки.
 - **Путь к файлу по `file_id`** — `ml.pages.file_path(file_id)`: он склеивает `01_ПАКЕТ/…/01_ДОКУМЕНТАЦИЯ/` с `relative_path` из реестра. Руками пути не собирать.
-- Папка — **локальный git-репозиторий** (с 25.09, ветка `main`, удалённого нет). В git только код, CLAUDE.md,
+- Папка — **локальный git-репозиторий** (с 25.09, ветка `main`). В git только код, CLAUDE.md, `docs/`,
   Dockerfile и примеры ответа (`out/submission_*.json`, `out/integrity_*.json`); данные организаторов, `models/`,
   кэш `out/cache` и ноутбуки Colab с результатами в выводе — в `.gitignore`.
+- **Командный репозиторий (с 27.09):** `git@github.com:midudar/ctrl_z_hackathon.git` (remote `team`; в `main` команды —
+  только README, в `dev` — ещё PDF ТЗ, `M_exploration` — эксперименты с OCR). ML-часть — ветка **`ml`** (от `team/dev`),
+  папка **`ml-service/`**, отдельный worktree `D:\hakaton	eam_ml`. Туда идут **снимки** локального `main`, без нашей
+  истории (в старых коммитах — ссылка на Google Drive со сканами организаторов). Обновить:
+  `cd /d/hakaton/team_ml && git rm -r -q ml-service && git read-tree --prefix=ml-service/ -u main && git commit -m … &&
+  git push` (коммиты локального `main` сначала закоммитить в `D:\hakaton\ltc`). SSH — аккаунт VSProgram. Архивы
+  `handover/inspector_ml_assets.zip` (кэш + модели) и `handover/inspector_ml_slides.zip` (слайды) — в GitHub Releases
+  командного репозитория, выкладывает Саша через сайт (утилиты `gh` нет).
 
 ## Окружение (Windows)
 
