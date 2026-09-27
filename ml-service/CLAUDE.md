@@ -81,7 +81,7 @@ TRAIN_data/                   data/ из TRAIN-архива: public_gold_checks.
   кэш `out/cache` и ноутбуки Colab с результатами в выводе — в `.gitignore`.
 - **Командный репозиторий (с 27.09):** `git@github.com:midudar/ctrl_z_hackathon.git` (remote `team`; в `main` команды —
   только README, в `dev` — ещё PDF ТЗ, `M_exploration` — эксперименты с OCR). ML-часть — ветка **`ml`** (от `team/dev`),
-  папка **`ml-service/`**, отдельный worktree `D:\hakaton	eam_ml`. Туда идут **снимки** локального `main`, без нашей
+  папка **`ml-service/`**, отдельный worktree `D:\hakaton\team_ml`. Туда идут **снимки** локального `main`, без нашей
   истории (в старых коммитах — ссылка на Google Drive со сканами организаторов). Обновить:
   `cd /d/hakaton/team_ml && git rm -r -q ml-service && git read-tree --prefix=ml-service/ -u main && git commit -m … &&
   git push` (коммиты локального `main` сначала закоммитить в `D:\hakaton\ltc`). SSH — аккаунт VSProgram. Архивы
