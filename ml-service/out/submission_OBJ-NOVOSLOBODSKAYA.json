@@ -676,18 +676,6 @@
       "note": "в РД нет комплекта ЭОМ"
     },
     {
-      "parameter_code": "IOS1-069",
-      "location": "",
-      "violation_label": "MISSING_DOCUMENT",
-      "protocol_status": "RD_MISSING",
-      "criticality": "Критическое (приостановка работ)",
-      "pd_value": null,
-      "rd_value": null,
-      "id_value": null,
-      "evidence": [],
-      "note": "в РД нет комплекта ЭОМ"
-    },
-    {
       "parameter_code": "IOS1-070",
       "location": "",
       "violation_label": "MISSING_DOCUMENT",
@@ -1067,18 +1055,6 @@
       "evidence": []
     },
     {
-      "parameter_code": "PPM-103",
-      "location": "",
-      "violation_label": "MISSING_DOCUMENT",
-      "protocol_status": "RD_MISSING",
-      "criticality": "Критическое (приостановка работ)",
-      "pd_value": null,
-      "rd_value": null,
-      "id_value": null,
-      "evidence": [],
-      "note": "в РД нет комплекта АР"
-    },
-    {
       "parameter_code": "PPM-104",
       "location": "",
       "violation_label": "MISSING_DOCUMENT",
@@ -1137,18 +1113,6 @@
       "id_value": null,
       "evidence": [],
       "note": "в РД нет комплекта СС"
-    },
-    {
-      "parameter_code": "PPM-109",
-      "location": "",
-      "violation_label": "MISSING_DOCUMENT",
-      "protocol_status": "RD_MISSING",
-      "criticality": "Критическое (приостановка работ)",
-      "pd_value": null,
-      "rd_value": null,
-      "id_value": null,
-      "evidence": [],
-      "note": "в РД нет комплекта СС, ЭОМ"
     },
     {
       "parameter_code": "PPM-110",
@@ -1389,18 +1353,6 @@
       "id_value": null,
       "evidence": [],
       "note": "в РД нет комплекта ОВ"
-    },
-    {
-      "parameter_code": "ZU-130",
-      "location": "Объект",
-      "violation_label": "MISSING_DOCUMENT",
-      "protocol_status": "RD_MISSING",
-      "criticality": "Существенное (предписание)",
-      "pd_value": null,
-      "rd_value": null,
-      "id_value": null,
-      "evidence": [],
-      "note": "в РД нет комплекта ЭОМ"
     },
     {
       "parameter_code": "ZU-131",
@@ -2132,6 +2084,106 @@
       ],
       "note": "в РД нет комплекта ВК / ИОС3",
       "criticality": "Существенное (предписание)",
+      "protocol_status": "RD_MISSING"
+    },
+    {
+      "parameter_code": "PPM-109",
+      "location": "Системы противопожарной защиты",
+      "violation_label": "MISSING_DOCUMENT",
+      "pd_value": "нг(А)-FRLS, нг(А)-FRHF",
+      "rd_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0128",
+          "pdf_page_number": 21,
+          "bbox_norm": [
+            0.119,
+            0.3127,
+            0.9446,
+            0.3325
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "кабели марки ВВГнг(А)-FRLS. Электропроводку питания линий аварийного освещения со встроенными"
+        }
+      ],
+      "note": "в РД нет комплекта ЭОМ / ИОС1",
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "RD_MISSING"
+    },
+    {
+      "parameter_code": "IOS1-069",
+      "location": "Распределительные сети",
+      "violation_label": "MISSING_DOCUMENT",
+      "pd_value": "нг(А), нг(А)-LS, нг(А)-HF, нг(А)-FRLS, нг(А)-FRHF",
+      "rd_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0128",
+          "pdf_page_number": 19,
+          "bbox_norm": [
+            0.119,
+            0.8021,
+            0.9449,
+            0.8219
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "шунтируются проводом с медной жилой ПуГВнг(А)-LS в оболочке желто-зеленого цвета сечением 6 мм."
+        }
+      ],
+      "note": "в РД нет комплекта ЭОМ / ИОС1",
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "RD_MISSING"
+    },
+    {
+      "parameter_code": "ZU-130",
+      "location": "Освещение",
+      "violation_label": "MISSING_DOCUMENT",
+      "pd_value": "LED",
+      "rd_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0128",
+          "pdf_page_number": 22,
+          "bbox_norm": [
+            0.119,
+            0.2186,
+            0.5887,
+            0.2384
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "светодиодные светильники, степень защиты не менее IP20."
+        }
+      ],
+      "note": "в РД нет комплекта ЭОМ / ИОС1",
+      "criticality": "Существенное (предписание)",
+      "protocol_status": "RD_MISSING"
+    },
+    {
+      "parameter_code": "PPM-103",
+      "location": "Противопожарные двери и ворота",
+      "violation_label": "MISSING_DOCUMENT",
+      "pd_value": "EI60",
+      "rd_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0104",
+          "pdf_page_number": 11,
+          "bbox_norm": [
+            0.1569,
+            0.6979,
+            0.7716,
+            0.7112
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "с Заданием на проектирование. Огнестойкость дверей лифтов принята EI 60."
+        }
+      ],
+      "note": "в РД нет комплекта АР",
+      "criticality": "Критическое (приостановка работ)",
       "protocol_status": "RD_MISSING"
     }
   ],

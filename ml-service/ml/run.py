@@ -20,7 +20,7 @@ from ml import paths, registry, submission
 
 def _tracks(object_id):
     """(название, функция) — каждая возвращает список проверок в формате submission."""
-    from ml import concrete, explication, fire, pipes, rooms, steel
+    from ml import concrete, doors, electric, explication, fire, pipes, rooms, steel
 
     def kr():
         return concrete.compare(object_id)          # КР + ИД (acts.merge_into внутри)
@@ -37,7 +37,9 @@ def _tracks(object_id):
             ("пожарные характеристики", lambda: fire.compare(object_id)),    # PZ-022, PZ-023
             ("экспликации помещений", lambda: explication.compare(object_id)),   # PZ-003 по помещениям
             ("сталь металлопроката", lambda: steel.compare(object_id)),          # KR-056
-            ("канализационные трубы", lambda: pipes.compare(object_id))]         # IOS3-075
+            ("канализационные трубы", lambda: pipes.compare(object_id)),         # IOS3-075
+            ("электрика: кабели, свет, мощность", lambda: electric.compare(object_id)),  # PPM-109, IOS1-069, ZU-130, PZ-014
+            ("огнестойкость дверей", lambda: doors.compare(object_id))]          # PPM-103
 
 
 def run(object_id, out_path=None):

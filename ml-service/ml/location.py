@@ -78,7 +78,8 @@ def normalize_location(parameter_code, raw):
         return OBJECT_LOCATION if kind == OBJECT else ""
     if kind == ROOM:
         return normalize_room(raw)
-    if kind == SYSTEM:
+    # марка системы («К1», «B2», «П 2.1») — к виду марки; описательное место («Системы противопожарной защиты») — как текст
+    if kind == SYSTEM and re.fullmatch(r"[A-Za-zА-Яа-яЁё]{1,5}\s?[\d.,/\-]*[A-Za-zА-Яа-я]?", _clean(raw)):
         return normalize_system(raw)
     s = _clean(raw)
     return s[:1].upper() + s[1:]

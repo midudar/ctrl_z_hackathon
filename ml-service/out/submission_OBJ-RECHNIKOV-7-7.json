@@ -632,17 +632,6 @@
       "evidence": []
     },
     {
-      "parameter_code": "IOS1-069",
-      "location": "",
-      "violation_label": "COMPARISON_IMPOSSIBLE",
-      "protocol_status": "COMPARISON_IMPOSSIBLE",
-      "criticality": "Критическое (приостановка работ)",
-      "pd_value": null,
-      "rd_value": null,
-      "id_value": null,
-      "evidence": []
-    },
-    {
       "parameter_code": "IOS1-070",
       "location": "",
       "violation_label": "COMPARISON_IMPOSSIBLE",
@@ -1017,17 +1006,6 @@
       "evidence": []
     },
     {
-      "parameter_code": "PPM-103",
-      "location": "",
-      "violation_label": "COMPARISON_IMPOSSIBLE",
-      "protocol_status": "COMPARISON_IMPOSSIBLE",
-      "criticality": "Критическое (приостановка работ)",
-      "pd_value": null,
-      "rd_value": null,
-      "id_value": null,
-      "evidence": []
-    },
-    {
       "parameter_code": "PPM-104",
       "location": "",
       "violation_label": "COMPARISON_IMPOSSIBLE",
@@ -1082,17 +1060,6 @@
       "id_value": null,
       "evidence": [],
       "note": "в РД нет комплекта СС"
-    },
-    {
-      "parameter_code": "PPM-109",
-      "location": "",
-      "violation_label": "COMPARISON_IMPOSSIBLE",
-      "protocol_status": "COMPARISON_IMPOSSIBLE",
-      "criticality": "Критическое (приостановка работ)",
-      "pd_value": null,
-      "rd_value": null,
-      "id_value": null,
-      "evidence": []
     },
     {
       "parameter_code": "PPM-110",
@@ -1318,17 +1285,6 @@
       "id_value": null,
       "evidence": [],
       "note": "в РД нет комплекта ОВ"
-    },
-    {
-      "parameter_code": "ZU-130",
-      "location": "Объект",
-      "violation_label": "COMPARISON_IMPOSSIBLE",
-      "protocol_status": "COMPARISON_IMPOSSIBLE",
-      "criticality": "Существенное (предписание)",
-      "pd_value": null,
-      "rd_value": null,
-      "id_value": null,
-      "evidence": []
     },
     {
       "parameter_code": "ZU-131",
@@ -2201,6 +2157,158 @@
       ],
       "note": "К2: чугун из ПД в РД сохранены, ПВХ не добавлен",
       "criticality": "Существенное (предписание)",
+      "protocol_status": "OK"
+    },
+    {
+      "parameter_code": "PPM-109",
+      "location": "Системы противопожарной защиты",
+      "violation_label": "NO_VIOLATION",
+      "pd_value": "нг(А)-FRLS, нг(А)-FRHF",
+      "rd_value": "нг(А)-FRLS",
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0268",
+          "pdf_page_number": 32,
+          "bbox_norm": [
+            0.1192,
+            0.4343,
+            0.8324,
+            0.4568
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "кабелем марки ВВГнг(А)-LS и ВВГнг(А)-FRLS на напряжение 400 В."
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0404",
+          "pdf_page_number": 3,
+          "bbox_norm": [
+            0.7099,
+            0.5395,
+            0.9719,
+            0.5483
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "распространяющим горение с пониженным дымо- и газовыделением марки ВВГнг(А)-FRLS. Ответвления"
+        }
+      ],
+      "note": "огнестойкие кабели для систем противопожарной защиты есть в ПД и в РД (ПД: нг(А)-FRLS, нг(А)-FRHF; РД: нг(А)-FRLS)",
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "OK"
+    },
+    {
+      "parameter_code": "IOS1-069",
+      "location": "Распределительные сети",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "нг(А)-LS, нг(А)-HF, нг(А)-FRLS, нг(А)-FRHF",
+      "rd_value": "нг(А)-LS, нг(А)-FRLS",
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0273",
+          "pdf_page_number": 15,
+          "bbox_norm": [
+            0.2425,
+            0.4576,
+            0.2724,
+            0.4647
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "ВВГнг-LS 4х16"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0411",
+          "pdf_page_number": 3,
+          "bbox_norm": [
+            0.3677,
+            0.8489,
+            0.6564,
+            0.8606
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "В качестве проводников заземления предусмотрен ПуГВнг(А)-LS, горячеоцинкованная полоса 40х4 мм. Объединение проводников PE и N за"
+        }
+      ],
+      "note": "в РД не найдено исполнение, которое есть в ПД: без галогенов (HF) (ПД: нг(А)-LS, нг(А)-HF, нг(А)-FRLS, нг(А)-FRHF; РД: нг(А)-LS, нг(А)-FRLS) — сверить по кабельному журналу",
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "ZU-130",
+      "location": "Освещение",
+      "violation_label": "NO_VIOLATION",
+      "pd_value": "LED",
+      "rd_value": "LED",
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0270",
+          "pdf_page_number": 18,
+          "bbox_norm": [
+            0.1515,
+            0.829,
+            0.523,
+            0.8474
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "светодиодных светильников и ламп;"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0407",
+          "pdf_page_number": 7,
+          "bbox_norm": [
+            0.7259,
+            0.4497,
+            0.8405,
+            0.4539
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "- Светильник светодиодный линейный 28 Вт, IP65"
+        }
+      ],
+      "note": "светодиодные светильники из ПД в РД сохранены",
+      "criticality": "Существенное (предписание)",
+      "protocol_status": "OK"
+    },
+    {
+      "parameter_code": "PPM-103",
+      "location": "Противопожарные двери и ворота",
+      "violation_label": "NO_VIOLATION",
+      "pd_value": "EI30, EIS60, EIWS60",
+      "rd_value": "EI30, EI60, EIS60, EIWS60",
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0253",
+          "pdf_page_number": 22,
+          "bbox_norm": [
+            0.1191,
+            0.6937,
+            0.9536,
+            0.7129
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "предусмотрены через противопожарные двери EIS60 размерами не менее 0,75×1,5м в"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0330",
+          "pdf_page_number": 7,
+          "bbox_norm": [
+            0.675,
+            0.6846,
+            0.7089,
+            0.689
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "EIS60 (EIWS60)"
+        }
+      ],
+      "note": "наибольший предел огнестойкости дверей ПД (60 мин) в РД есть (по меткам на планах АР); ПД: EI30, EIS60, EIWS60; РД: EI30, EI60, EIS60, EIWS60",
+      "criticality": "Критическое (приостановка работ)",
       "protocol_status": "OK"
     }
   ],
