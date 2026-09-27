@@ -1,0 +1,30 @@
+# Данные организаторов (десятки ГБ) — в репозиторий не кладём
+*.zip
+01_ПАКЕТ/
+02_МЕТОДИКА/
+TRAIN_data/
+TEST/
+объекты/
+pilot/
+*.pdf
+
+# Модели (EasyOCR 94 МБ, Tesseract 29 МБ) — передаются отдельно, в Docker-образ копируются из models/
+models/
+
+# Всё, что порождает код. Оставляем только примеры ответа и отчёта целостности — по ним строится интерфейс
+out/*
+!out/submission_*.json
+!out/integrity_*.json
+out_tess/
+
+# Ноутбуки Colab с результатами в выводе (результат уже лежит в кэше out/cache); чистые собираются build_*.py
+colab/colab_ocr.ipynb
+colab/colab_strips.ipynb
+colab/colab_pages2.ipynb
+colab/colab_paddle_end.ipynb
+
+__pycache__/
+*.pyc
+
+# Архив для команды (кэш OCR + модели) — передаётся отдельно
+handover/

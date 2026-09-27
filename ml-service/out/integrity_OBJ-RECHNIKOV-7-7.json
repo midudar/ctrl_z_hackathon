@@ -1,0 +1,111 @@
+{
+  "object_id": "OBJ-RECHNIKOV-7-7",
+  "summary": {
+    "files": 213,
+    "pdf": 164,
+    "stages": [
+      "ID",
+      "PD",
+      "RD"
+    ],
+    "findings": 4
+  },
+  "findings": [
+    {
+      "type": "TEMPORARY_EDITOR_ARTIFACTS",
+      "severity": "MEDIUM",
+      "title": "Временные и резервные файлы редакторов (~$, BAK, DWL, TMP, LOG)",
+      "count": 0,
+      "file_ids": [],
+      "inside_archives": [
+        "F0326:ВП-7-14 участок.bak",
+        "F0326:Генплан.bak",
+        "F0326:СПИС.bak",
+        "F0339:plot.log",
+        "F0339:01-07.23-14-��-��0.bak",
+        "F0412:������������.bak"
+      ],
+      "inside_archives_count": 6
+    },
+    {
+      "type": "PDF_WITHOUT_MACHINE_READABLE_TEXT",
+      "severity": "MEDIUM",
+      "title": "ID: у 13 из 31 PDF на первой странице нет текстового слоя — нужен OCR",
+      "count": 13,
+      "file_ids": [
+        "F0208",
+        "F0209",
+        "F0210",
+        "F0211",
+        "F0212",
+        "F0215",
+        "F0216",
+        "F0217",
+        "F0222",
+        "F0223",
+        "F0224",
+        "F0229",
+        "F0230"
+      ],
+      "stage": "ID"
+    },
+    {
+      "type": "DISCIPLINE_MISSING_IN_RD",
+      "severity": "HIGH",
+      "title": "В ПД есть разделы ОВ, СС, а комплектов РД этих марок в пакете нет",
+      "count": 0,
+      "file_ids": [],
+      "disciplines": [
+        "ОВ",
+        "СС"
+      ]
+    },
+    {
+      "type": "SUPERSEDED_REVISIONS_EXCLUDED",
+      "severity": "INFO",
+      "title": "PD: устаревшие редакции (38) исключены из сравнения",
+      "count": 38,
+      "file_ids": [
+        "F0236",
+        "F0238",
+        "F0239",
+        "F0240",
+        "F0242",
+        "F0243",
+        "F0246",
+        "F0248",
+        "F0251",
+        "F0252",
+        "F0254",
+        "F0256",
+        "F0257",
+        "F0258",
+        "F0259",
+        "F0261",
+        "F0264",
+        "F0266",
+        "F0269",
+        "F0271",
+        "F0278",
+        "F0279",
+        "F0287",
+        "F0289",
+        "F0291",
+        "F0295",
+        "F0297",
+        "F0299",
+        "F0301",
+        "F0303",
+        "F0305",
+        "F0308",
+        "F0309",
+        "F0311",
+        "F0317",
+        "F0319",
+        "F0320",
+        "F0322"
+      ],
+      "stage": "PD"
+    }
+  ]
+}

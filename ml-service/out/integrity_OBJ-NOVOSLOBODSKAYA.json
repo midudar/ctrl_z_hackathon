@@ -1,0 +1,26 @@
+{
+  "object_id": "OBJ-NOVOSLOBODSKAYA",
+  "summary": {
+    "files": 145,
+    "pdf": 145,
+    "stages": [
+      "ID",
+      "PD",
+      "RD"
+    ],
+    "findings": 1
+  },
+  "findings": [
+    {
+      "type": "DISCIPLINE_MISSING_IN_RD",
+      "severity": "HIGH",
+      "title": "В ПД есть разделы АР, ГП, а комплектов РД этих марок в пакете нет",
+      "count": 0,
+      "file_ids": [],
+      "disciplines": [
+        "АР",
+        "ГП"
+      ]
+    }
+  ]
+}

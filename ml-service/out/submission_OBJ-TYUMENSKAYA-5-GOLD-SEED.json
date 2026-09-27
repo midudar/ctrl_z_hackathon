@@ -1,0 +1,2644 @@
+{
+  "object_id": "OBJ-TYUMENSKAYA-5-GOLD-SEED",
+  "checks": [
+    {
+      "parameter_code": "PZ-001",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "PZ-002",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "PZ-004",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР, КР"
+    },
+    {
+      "parameter_code": "PZ-005",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР, КР"
+    },
+    {
+      "parameter_code": "PZ-006",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР, КР"
+    },
+    {
+      "parameter_code": "PZ-007",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "PZ-008",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "PZ-010",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "PZ-011",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "PZ-012",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "PZ-013",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ТХ"
+    },
+    {
+      "parameter_code": "PZ-014",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ЭОМ"
+    },
+    {
+      "parameter_code": "PZ-015",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ЭОМ"
+    },
+    {
+      "parameter_code": "PZ-016",
+      "location": "Объект",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "PZ-017",
+      "location": "Объект",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "PZ-018",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГСВ"
+    },
+    {
+      "parameter_code": "PZ-019",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "PZ-020",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "PZ-021",
+      "location": "Объект",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "SPZU-024",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "SPZU-025",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "SPZU-026",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "SPZU-027",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "SPZU-028",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "SPZU-029",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "SPZU-030",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "SPZU-031",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "SPZU-032",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "SPZU-033",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "SPZU-034",
+      "location": "Объект",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "SPZU-035",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "SPZU-036",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР, ГП"
+    },
+    {
+      "parameter_code": "SPZU-037",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "SPZU-038",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "SPZU-039",
+      "location": "Объект",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "AR-040",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "AR-041",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "AR-042",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "AR-043",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "AR-044",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "AR-045",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "AR-046",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "AR-047",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "AR-048",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "AR-049",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "AR-050",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "AR-051",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "AR-052",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "AR-053",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "KR-054",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта КР"
+    },
+    {
+      "parameter_code": "KR-060",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта КР"
+    },
+    {
+      "parameter_code": "KR-062",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта КР"
+    },
+    {
+      "parameter_code": "KR-063",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта КР"
+    },
+    {
+      "parameter_code": "KR-064",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта КР"
+    },
+    {
+      "parameter_code": "KR-065",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта КР"
+    },
+    {
+      "parameter_code": "KR-066",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта КР"
+    },
+    {
+      "parameter_code": "KR-067",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта КР"
+    },
+    {
+      "parameter_code": "IOS1-068",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ЭОМ"
+    },
+    {
+      "parameter_code": "IOS1-069",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ЭОМ"
+    },
+    {
+      "parameter_code": "IOS1-070",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ЭОМ"
+    },
+    {
+      "parameter_code": "IOS2-071",
+      "location": "",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "IOS2-072",
+      "location": "",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "IOS2-073",
+      "location": "",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "IOS3-074",
+      "location": "",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "IOS4-076",
+      "location": "",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "IOS4-077",
+      "location": "",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "IOS5-080",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта СС"
+    },
+    {
+      "parameter_code": "POS-081",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "POS-082",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "POS-083",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "POS-084",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "POS-085",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "POS-086",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "POS-087",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "POS-088",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "POS-089",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "POD-090",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "POD-091",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "POD-092",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "POD-093",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "POD-094",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "POD-095",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "POD-096",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта КР, ППР"
+    },
+    {
+      "parameter_code": "POD-097",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "OOS-098",
+      "location": "Объект",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "OOS-099",
+      "location": "Объект",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "OOS-100",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ППР"
+    },
+    {
+      "parameter_code": "OOS-101",
+      "location": "Объект",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "PPM-102",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР, КР"
+    },
+    {
+      "parameter_code": "PPM-103",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "PPM-104",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "PPM-105",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "PPM-106",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "PPM-107",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "PPM-108",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта СС"
+    },
+    {
+      "parameter_code": "PPM-109",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта СС, ЭОМ"
+    },
+    {
+      "parameter_code": "PPM-110",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта СС"
+    },
+    {
+      "parameter_code": "PPM-111",
+      "location": "",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "PPM-112",
+      "location": "",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "PPM-113",
+      "location": "",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "PPM-114",
+      "location": "Объект",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "ODI-115",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР, ТХ"
+    },
+    {
+      "parameter_code": "ODI-116",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "ODI-117",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "ODI-118",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "ODI-119",
+      "location": "",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "ODI-120",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "ODI-121",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ГП"
+    },
+    {
+      "parameter_code": "ODI-122",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР, ГП"
+    },
+    {
+      "parameter_code": "ODI-123",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта СС"
+    },
+    {
+      "parameter_code": "ZU-124",
+      "location": "Объект",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "ZU-125",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "ZU-126",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "ZU-127",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "ZU-128",
+      "location": "",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта АР"
+    },
+    {
+      "parameter_code": "ZU-129",
+      "location": "Объект",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "ZU-130",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "protocol_status": "RD_MISSING",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "note": "в РД нет комплекта ЭОМ"
+    },
+    {
+      "parameter_code": "ZU-131",
+      "location": "Объект",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Критическое (приостановка работ)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "SM-132",
+      "location": "Объект",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "protocol_status": "COMPARISON_IMPOSSIBLE",
+      "criticality": "Существенное (предписание)",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": []
+    },
+    {
+      "parameter_code": "KR-055",
+      "location": "Стена в грунте",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "KR-055",
+      "location": "Фундаментная плита",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "B25",
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0158",
+          "pdf_page_number": 21,
+          "bbox_norm": [
+            0.1286,
+            0.721,
+            0.8442,
+            0.7434
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "здание выполняются из бетона B25 W 4 F150. Фундаменты - плитные."
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "KR-055",
+      "location": "Плиты перекрытий подземной части",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "KR-055",
+      "location": "Плиты перекрытий надземной части",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "B25",
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0158",
+          "pdf_page_number": 20,
+          "bbox_norm": [
+            0.1286,
+            0.1416,
+            0.9589,
+            0.164
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "250х500мм выполнены из бетона В 25 W 4 F1 0 0. Покрытия в большепролетных"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "KR-055",
+      "location": "Вертикальные конструкции подземной части",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": null,
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "KR-055",
+      "location": "Вертикальные конструкции надземной части",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "B25/B30",
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0158",
+          "pdf_page_number": 18,
+          "bbox_norm": [
+            0.212,
+            0.7629,
+            0.877,
+            0.7853
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "Стены выполнены из бетона В30W8F200 толщиной 200 и 250мм."
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "PZ-009",
+      "location": "Отметка 0.000",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "138",
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0158",
+          "pdf_page_number": 21,
+          "bbox_norm": [
+            0.1286,
+            0.8607,
+            0.8586,
+            0.8792
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "пола 1-го этажа здания, что соответствует абсолютной отметке +138,00."
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "KR-058",
+      "location": "Фундаментная плита",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "100/250/600 мм",
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0158",
+          "pdf_page_number": 17,
+          "bbox_norm": [
+            0.1286,
+            0.1632,
+            0.9529,
+            0.1816
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "600мм по бетонной подготовке толщиной 100мм на естественном основании с"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "KR-059",
+      "location": "Плиты перекрытий",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "100/150/200/250/500 мм",
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0158",
+          "pdf_page_number": 17,
+          "bbox_norm": [
+            0.1286,
+            0.2944,
+            0.9585,
+            0.355
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "400х500мм и d600мм . толщиной 200мм по балкам сечения 250х500 и 250х7 5 0. Покрытия в"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "KR-061",
+      "location": "Монолитные стены",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "200/250 мм",
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0159",
+          "pdf_page_number": 15,
+          "bbox_norm": [
+            0.1881,
+            0.3024,
+            0.8905,
+            0.3591
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "Плита канала толщиной 200мм выполняется по бетонной подготовке Стены канала толщиной 200мм."
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "KR-057",
+      "location": "Рабочая арматура",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "А240/А500С",
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0159",
+          "pdf_page_number": 15,
+          "bbox_norm": [
+            0.1286,
+            0.2617,
+            0.9354,
+            0.2842
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "железобетонных конструкций выполняется из арматуры А 4 00 и А240 по ГОСТ"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "IOS4-079",
+      "location": "006",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "В1: В1.1; П1: П1; П11: П11; П12: П12; П13: П13; П14: П14; П16: П16; П4: П4; П5: П5; П6: П6; П7: П7",
+      "rd_value": "В2: В2; П1: П1; П11: П11; П12: П12; П13: П13; П14: П14; П16: П16; П2: П2; П4: П4; П5: П5; П6: П6",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 85,
+          "bbox_norm": [
+            0.1552,
+            0.7728,
+            0.1726,
+            0.8319
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "006"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0202",
+          "pdf_page_number": 15,
+          "bbox_norm": [
+            0.2155,
+            0.6689,
+            0.2476,
+            0.6896
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "006"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "007",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "П20: П20",
+      "rd_value": "В19: В19; В20: В20; В3: В3; П10: П10; П13: П13; П15: П15; П17: П17.1; П18: П18; П2: П2; П21: П21; П3: П3; П8: П8",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 104,
+          "bbox_norm": [
+            0.5189,
+            0.4499,
+            0.5497,
+            0.5335
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "007"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 17,
+          "bbox_norm": [
+            0.5565,
+            0.5046,
+            0.5887,
+            0.5256
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "007"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "008",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "ПЕ: ПЕ",
+      "rd_value": "В22: В22; В3: В3",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 87,
+          "bbox_norm": [
+            0.7342,
+            0.7883,
+            0.7778,
+            0.8475
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "008"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 17,
+          "bbox_norm": [
+            0.3257,
+            0.1416,
+            0.3574,
+            0.1627
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "008"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "140",
+      "violation_label": "VIOLATION_PRESENT",
+      "pd_value": "В2: В2.7, В2.8, В2.9",
+      "rd_value": "ВЕ: ВЕ16; П2: П2",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 88,
+          "bbox_norm": [
+            0.2087,
+            0.6299,
+            0.2375,
+            0.6891
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "140"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 18,
+          "bbox_norm": [
+            0.909,
+            0.1855,
+            0.9389,
+            0.2062
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "140"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "CRITICAL"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "142",
+      "violation_label": "VIOLATION_PRESENT",
+      "pd_value": "В2: В2.4, В2.5, В2.6",
+      "rd_value": "ВЕ: ВЕ, ВЕ13; П2: П2",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 88,
+          "bbox_norm": [
+            0.1563,
+            0.6299,
+            0.1851,
+            0.6891
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "142"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 18,
+          "bbox_norm": [
+            0.8938,
+            0.1305,
+            0.9237,
+            0.1512
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "142"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "CRITICAL"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "147",
+      "violation_label": "VIOLATION_PRESENT",
+      "pd_value": "В2: В2.10",
+      "rd_value": "В2: В2, В2.3, В2.4",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 88,
+          "bbox_norm": [
+            0.3097,
+            0.6399,
+            0.3385,
+            0.699
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "147"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 18,
+          "bbox_norm": [
+            0.8948,
+            0.283,
+            0.9247,
+            0.3037
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "147"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "CRITICAL"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "159",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "В12: В12.1",
+      "rd_value": "В12: В12, В12.2; В13: В13; П12: П12; П13: П13",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 86,
+          "bbox_norm": [
+            0.3537,
+            0.6417,
+            0.3823,
+            0.7008
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "159"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 18,
+          "bbox_norm": [
+            0.2211,
+            0.539,
+            0.2508,
+            0.5597
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "159"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "160",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "П11: П11",
+      "rd_value": "В1: В1.1, В1.2; В12: В12.2; В21: В21; В3: В3; В4: В4",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 86,
+          "bbox_norm": [
+            0.172,
+            0.4715,
+            0.2006,
+            0.5306
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "160"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 18,
+          "bbox_norm": [
+            0.1379,
+            0.4991,
+            0.1676,
+            0.5198
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "160"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "185",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "В4: В4",
+      "rd_value": "В17: В17.2; В3: В3; П17: П17",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 85,
+          "bbox_norm": [
+            0.6159,
+            0.6209,
+            0.633,
+            0.6801
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "185"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 18,
+          "bbox_norm": [
+            0.9064,
+            0.7641,
+            0.9361,
+            0.7848
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "185"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "186",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "В4: В4; П20: П20",
+      "rd_value": "В4: В4",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 94,
+          "bbox_norm": [
+            0.6885,
+            0.6308,
+            0.7099,
+            0.69
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "186"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 18,
+          "bbox_norm": [
+            0.8761,
+            0.7599,
+            0.9058,
+            0.7807
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "186"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "189",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "В17: В17.13; В4: В4",
+      "rd_value": "В4: В4",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 85,
+          "bbox_norm": [
+            0.4538,
+            0.6399,
+            0.4709,
+            0.699
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "189"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 18,
+          "bbox_norm": [
+            0.7522,
+            0.7669,
+            0.7819,
+            0.7876
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "189"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "191",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "П3: П3",
+      "rd_value": "ПЕ: ПЕ2",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 94,
+          "bbox_norm": [
+            0.7853,
+            0.6299,
+            0.8063,
+            0.6891
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "191"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 18,
+          "bbox_norm": [
+            0.7609,
+            0.6992,
+            0.7901,
+            0.72
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "191"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "192",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "В1: В1",
+      "rd_value": "В17: В17; П17: П17",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 94,
+          "bbox_norm": [
+            0.739,
+            0.6399,
+            0.7604,
+            0.699
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "192"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 18,
+          "bbox_norm": [
+            0.8311,
+            0.6666,
+            0.8608,
+            0.6874
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "192"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "198",
+      "violation_label": "VIOLATION_PRESENT",
+      "pd_value": "В2: В2.2, В2.3",
+      "rd_value": "В2: В2.10, В2.8, В2.9; ВЕ: ВЕ14",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 88,
+          "bbox_norm": [
+            0.6968,
+            0.6399,
+            0.7254,
+            0.699
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "198"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 18,
+          "bbox_norm": [
+            0.6925,
+            0.1331,
+            0.7222,
+            0.1538
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "198"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "CRITICAL"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "302",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "ПД11: ПД11",
+      "rd_value": "В3: В3; В6: В6.2; П5: П5; П6: П6",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 93,
+          "bbox_norm": [
+            0.0883,
+            0.3473,
+            0.1191,
+            0.4309
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "302"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 20,
+          "bbox_norm": [
+            0.3656,
+            0.5719,
+            0.3972,
+            0.5929
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "302"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "334",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "ПД17: ПД17.2",
+      "rd_value": "ВЕ: ВЕ; П4: П4; ПД13: ПД13; ПД17: ПД17.1; ПД24: ПД24",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 93,
+          "bbox_norm": [
+            0.6459,
+            0.2886,
+            0.677,
+            0.3723
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "334"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 20,
+          "bbox_norm": [
+            0.3094,
+            0.6796,
+            0.3413,
+            0.7007
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "334"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "339",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "В2: В2.12, В2.15; ПД19: ПД19",
+      "rd_value": "В2: В2.12, В2.13, В2.14, В2.15; В3: В3",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 90,
+          "bbox_norm": [
+            0.4403,
+            0.2898,
+            0.4813,
+            0.3735
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "339"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 20,
+          "bbox_norm": [
+            0.5023,
+            0.4264,
+            0.534,
+            0.4475
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "339"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "IOS4-078",
+      "location": "341",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "В2: В2.12, В2.13",
+      "rd_value": "ВЕ: ВЕ27; П2: П2",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 88,
+          "bbox_norm": [
+            0.8146,
+            0.3443,
+            0.8434,
+            0.4035
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "341"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0201",
+          "pdf_page_number": 20,
+          "bbox_norm": [
+            0.5829,
+            0.4448,
+            0.6143,
+            0.4658
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "341"
+        }
+      ],
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    },
+    {
+      "parameter_code": "FREE-HEATING-001",
+      "location": "267",
+      "violation_label": "VIOLATION_PRESENT",
+      "pd_value": "тёплый пол: предусмотрен",
+      "rd_value": "тёплый пол: не найден",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 99,
+          "bbox_norm": [
+            0.286,
+            0.3943,
+            0.3039,
+            0.4535
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "267,"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0202",
+          "pdf_page_number": 17,
+          "bbox_norm": [
+            0.3466,
+            0.6664,
+            0.3787,
+            0.6871
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "267"
+        }
+      ],
+      "criticality": "Существенное (предписание)",
+      "protocol_status": "WARNING"
+    },
+    {
+      "parameter_code": "FREE-HEATING-001",
+      "location": "270",
+      "violation_label": "VIOLATION_PRESENT",
+      "pd_value": "тёплый пол: предусмотрен",
+      "rd_value": "тёплый пол: не найден",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 99,
+          "bbox_norm": [
+            0.2906,
+            0.3943,
+            0.308,
+            0.4535
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "270"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0202",
+          "pdf_page_number": 17,
+          "bbox_norm": [
+            0.3427,
+            0.6921,
+            0.3748,
+            0.7129
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "270"
+        }
+      ],
+      "criticality": "Существенное (предписание)",
+      "protocol_status": "WARNING"
+    },
+    {
+      "parameter_code": "FREE-HEATING-001",
+      "location": "271",
+      "violation_label": "VIOLATION_PRESENT",
+      "pd_value": "тёплый пол: предусмотрен",
+      "rd_value": "тёплый пол: не найден",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 99,
+          "bbox_norm": [
+            0.3056,
+            0.3943,
+            0.3233,
+            0.4535
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "271,"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0202",
+          "pdf_page_number": 17,
+          "bbox_norm": [
+            0.3818,
+            0.6661,
+            0.4139,
+            0.6868
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "271"
+        }
+      ],
+      "criticality": "Существенное (предписание)",
+      "protocol_status": "WARNING"
+    },
+    {
+      "parameter_code": "FREE-HEATING-001",
+      "location": "272",
+      "violation_label": "VIOLATION_PRESENT",
+      "pd_value": "тёплый пол: предусмотрен",
+      "rd_value": "тёплый пол: не найден",
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0171",
+          "pdf_page_number": 99,
+          "bbox_norm": [
+            0.31,
+            0.3943,
+            0.3274,
+            0.4535
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "272"
+        },
+        {
+          "stage": "RD",
+          "file_id": "F0202",
+          "pdf_page_number": 17,
+          "bbox_norm": [
+            0.3796,
+            0.692,
+            0.4117,
+            0.7128
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "272"
+        }
+      ],
+      "criticality": "Существенное (предписание)",
+      "protocol_status": "WARNING"
+    },
+    {
+      "parameter_code": "PZ-022",
+      "location": "Объект",
+      "pd_value": "I",
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0193",
+          "pdf_page_number": 18,
+          "bbox_norm": [
+            0.1478,
+            0.075,
+            0.9597,
+            0.0934
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "планировочных решений, степени огнестойкости и класса конструктивной"
+        }
+      ],
+      "violation_label": "MISSING_DOCUMENT",
+      "note": "в РД нет комплекта АР, КР",
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "RD_MISSING"
+    },
+    {
+      "parameter_code": "PZ-023",
+      "location": "Объект",
+      "pd_value": "С0",
+      "rd_value": null,
+      "id_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0193",
+          "pdf_page_number": 18,
+          "bbox_norm": [
+            0.1548,
+            0.2152,
+            0.729,
+            0.2556
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "класс конструктивной пожарной опасности здания – С0; класс функциональной пожарной опасности Ф 4.1;"
+        }
+      ],
+      "violation_label": "MISSING_DOCUMENT",
+      "note": "в РД нет комплекта АР, КР",
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "RD_MISSING"
+    },
+    {
+      "parameter_code": "PZ-003",
+      "location": "Объект",
+      "violation_label": "MISSING_DOCUMENT",
+      "pd_value": "424 помещений",
+      "rd_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0156",
+          "pdf_page_number": 26,
+          "bbox_norm": [
+            0.7,
+            0.1207,
+            0.8352,
+            0.3244
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "Экспликация помещений подвала на отм. -2,950 Номер"
+        }
+      ],
+      "note": "в РД нет комплекта АР — экспликации не с чем сравнить",
+      "criticality": "Существенное (предписание)",
+      "protocol_status": "RD_MISSING"
+    },
+    {
+      "parameter_code": "KR-056",
+      "location": "Металлоконструкции",
+      "violation_label": "MISSING_DOCUMENT",
+      "pd_value": "С245, С345",
+      "rd_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0158",
+          "pdf_page_number": 19,
+          "bbox_norm": [
+            0.1286,
+            0.0854,
+            0.9138,
+            0.1079
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "лестницы, выполненные из металлических профилей из стали С245 по ГОСТ"
+        }
+      ],
+      "note": "в РД нет комплекта КР / КМ — марки стали не с чем сравнить",
+      "criticality": "Критическое (приостановка работ)",
+      "protocol_status": "RD_MISSING"
+    },
+    {
+      "parameter_code": "IOS3-075",
+      "location": "К1",
+      "violation_label": "COMPARISON_IMPOSSIBLE",
+      "pd_value": "чугун, ПВХ, ПП, сталь",
+      "rd_value": null,
+      "evidence": [
+        {
+          "stage": "PD",
+          "file_id": "F0167",
+          "pdf_page_number": 6,
+          "bbox_norm": [
+            0.171,
+            0.2399,
+            0.5972,
+            0.2557
+          ],
+          "bbox_source": "text_layer",
+          "fragment": "Канализация из труб ВЧШГ диаметром 250 мм в"
+        }
+      ],
+      "note": "в РД комплект ВК есть, но материал канализационных труб в тексте не найден (сканы или только чертежи)",
+      "criticality": "Существенное (предписание)",
+      "protocol_status": "COMPARISON_IMPOSSIBLE"
+    }
+  ],
+  "document_integrity": {
+    "summary": {
+      "files": 58,
+      "pdf": 57,
+      "stages": [
+        "ID",
+        "PD",
+        "RD"
+      ],
+      "findings": 2
+    },
+    "findings": [
+      {
+        "type": "PDF_WITHOUT_MACHINE_READABLE_TEXT",
+        "severity": "MEDIUM",
+        "title": "PD: у 1 из 47 PDF на первой странице нет текстового слоя — нужен OCR",
+        "count": 1,
+        "file_ids": [
+          "F0186"
+        ],
+        "stage": "PD"
+      },
+      {
+        "type": "DISCIPLINE_MISSING_IN_RD",
+        "severity": "HIGH",
+        "title": "В ПД есть разделы АР, ГП, КР, СС, ЭОМ, а комплектов РД этих марок в пакете нет",
+        "count": 0,
+        "file_ids": [],
+        "disciplines": [
+          "АР",
+          "ГП",
+          "КР",
+          "СС",
+          "ЭОМ"
+        ]
+      }
+    ]
+  }
+}

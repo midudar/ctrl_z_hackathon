@@ -1,0 +1,39 @@
+{
+  "object_id": "OBJ-TYUMENSKAYA-5-GOLD-SEED",
+  "summary": {
+    "files": 58,
+    "pdf": 57,
+    "stages": [
+      "ID",
+      "PD",
+      "RD"
+    ],
+    "findings": 2
+  },
+  "findings": [
+    {
+      "type": "PDF_WITHOUT_MACHINE_READABLE_TEXT",
+      "severity": "MEDIUM",
+      "title": "PD: у 1 из 47 PDF на первой странице нет текстового слоя — нужен OCR",
+      "count": 1,
+      "file_ids": [
+        "F0186"
+      ],
+      "stage": "PD"
+    },
+    {
+      "type": "DISCIPLINE_MISSING_IN_RD",
+      "severity": "HIGH",
+      "title": "В ПД есть разделы АР, ГП, КР, СС, ЭОМ, а комплектов РД этих марок в пакете нет",
+      "count": 0,
+      "file_ids": [],
+      "disciplines": [
+        "АР",
+        "ГП",
+        "КР",
+        "СС",
+        "ЭОМ"
+      ]
+    }
+  ]
+}

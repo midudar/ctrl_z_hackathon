@@ -1,0 +1,6 @@
+# torch и torchvision приходят с базовым образом (см. Dockerfile), здесь их нет намеренно
+pymupdf==1.28.*
+easyocr==1.7.*
+jsonschema==4.*
+numpy>=1.26
+opencv-python-headless>=4.9
