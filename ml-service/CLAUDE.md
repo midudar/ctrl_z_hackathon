@@ -50,31 +50,27 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **28.09 — сервис сделан и проверен локально (backend, frontend, воркер, протокол PDF / DOCX / XML, docker-compose,
 тесты, документация) — раздел «Сервис (28.09)» ниже. Осталось: командный репозиторий, Docker-сборка, презентация.**
 
-**28.09, ночь — в работе: сборка Docker локально через WSL + README и документация** (Саша выбрал «локально через WSL»;
-в командном репозитории — **только ветка `ml`, `main` не трогать**; репозиторий пока **закрытый** — GitHub отдаёт 404,
-открыть может только владелец midudar). Docker Desktop нет; WSL не стартовал (`HCS_E_SERVICE_NOT_AVAILABLE`) — Саша
-включает «Платформу виртуальной машины» (`dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all
-/norestart` от администратора) и перезагружается. Зарегистрированная Ubuntu-22.04 пустая (диска нет) — не трогать.
-**Сделано после перезагрузки (22:40):** дистрибутив `inspector-docker` (Ubuntu 24.04, диск `D:\wsl\inspector-docker\ext4.vhdx`;
-образ скачан в `D:\wsl\Ubuntu-24.04.wsl`, SHA-256 сверен — `wsl --install` с `timeout` оборвал загрузку, поэтому `--from-file`),
-Docker Engine 29.1 + Compose 2.40 + buildx; локальный `main` закоммичен (`a609fd9`), снимок в `team_ml` — `6510ca1`
-(**не запушен**); чистый клон в WSL `~/ctrl_z`, архив распакован, `.env` — скрипт `D:\wsl\env.sh`; сборка — `D:\wsl\build.sh`
-→ лог `D:\wsl\build.log`. Команды в WSL — только файлом (`wsl -d inspector-docker -u root -e bash /mnt/d/wsl/x.sh`):
-`wsl -- bash -c '…'` теряет `$ПЕРЕМЕННЫЕ`. Интернет ~0,6 МБ/с — образ жюри (pytorch ~3,5 ГБ) под вопросом.
-**План после перезагрузки (исходный):** `wsl --install Ubuntu-24.04 --name inspector-docker --location D:\wsl\inspector-docker
---web-download --no-launch` → `wsl -d inspector-docker -u root -- bash /mnt/d/hakaton/ltc/tools/wsl_docker.sh` (docker.io +
-compose + buildx) → держать WSL живым фоновой задачей (`wsl -d inspector-docker -u root -- sleep infinity`) → снимок в
-`team_ml` (закоммитить локальный `main`) → `git clone -b ml /mnt/d/hakaton/ltc ~/ctrl_z` внутри WSL (чистый клон) →
-распаковать `handover/inspector_ml_assets.zip` в `ml-service/` (архив актуален: 970 файлов кэша = диск) → `.env`
-(PACKAGE_DOCS / PACKAGE_DATA из `/mnt/d/hakaton/ltc/01_ПАКЕТ/…`, `PORT=8090` — на 8080 backend Windows) → `docker compose
-up --build` → проверки: 3 объекта, `demo_scenario.mjs` с `BASE=http://localhost:8090` (путь через RabbitMQ), протокол PDF /
-DOCX (REST воркера), без пакета (`down -v`, пустой старт); образ жюри `docker build` в `ml-service/` + прогон Речникова →
-сверка с `out/submission_*.json`. Уже сделано к сборке: порты compose через `.env` (`PORT`, `RABBITMQ_UI_PORT`), кэш и
-модели в Dockerfile необязательны (`COPY ou[t]/cach[e]` — шаблон на каждой части пути, иначе без архива падает), воркер пишет число файлов кэша при старте и в `/health`.
-До перезагрузки (не закоммичено) переписаны `service/README.md` (корневой README команды: Docker, без Docker, «что
-посмотреть за 5 минут», стек, образ жюри, документация) и `docs/Инспектор_ИИ_сервис.md` (раздел 2 «Архитектура и стек»,
-раздел 9 — Docker подробно); скрипт `tools/wsl_docker.sh`. После сборки — дописать «Что проверено» (README и раздел 12
-документа сервиса: время сборки, что прошло), затем снимок и пуш в `ml`.
+**28.09, ночь — Docker собран и проверен (WSL), README и документация переписаны.** В командном репозитории — **только
+ветка `ml`, `main` не трогать** (решение Саши); репозиторий пока **закрытый** (GitHub отдаёт 404), открыть может только
+владелец midudar. Что сделано:
+- **Docker в WSL** (Docker Desktop нет): Саша включил «Платформу виртуальной машины» (dism + перезагрузка); дистрибутив
+  `inspector-docker` (Ubuntu 24.04, диск `D:\wsl\inspector-docker\ext4.vhdx` — на C: не пишется), Docker Engine 29.1 +
+  Compose 2.40 + buildx (`tools/wsl_docker.sh`). Зарегистрированная Ubuntu-22.04 пустая — не трогать. **Docker Hub из сети
+  ноутбука недоступен** (соединение с registry-1.docker.io висит) → `/etc/docker/daemon.json` с `mirror.gcr.io`; сеть
+  0,2–2 МБ/с и рвётся (pull — с повторами). WSL живёт, пока открыт `wsl … sleep infinity` (фоновая задача).
+  Команды в WSL — только файлом: `wsl -d inspector-docker -u root -e bash /mnt/d/wsl/<скрипт>.sh` (`wsl -- bash -c '…'`
+  теряет `$ПЕРЕМЕННЫЕ`); скрипты и логи — `D:\wsl\` (env, build, up, clean, clean2, rebuild_worker, jury_pull).
+- **Стенды в WSL:** `~/ctrl_z` (клон ветки `ml` + архив + пакет, порт **8090**, RabbitMQ 15673) и `~/ctrl_z_clean` (без архива
+  и пакета, проект `inspector-clean`, порт **8091**). Из Windows — `http://localhost:8090` / `8091`. Проверки —
+  `D:\hakaton\ui_check\docker_check.mjs` (API, картинки, протокол 4 формата), `demo_scenario.mjs` (путь RabbitMQ),
+  `run_object.mjs` (пересчёт объекта через очередь), `flow.mjs` (интерфейс; `BASE=… SHOTS=shots_docker`).
+- **Итог проверки:** сборка 6,5 мин; все проверки прошли; демо через RabbitMQ — 21 с / 18 с, как локально; пересчёт
+  Новослободской через очередь совпал с v1 (6,4 мин — чтение `/mnt/d` через 9p); без архива и пакета — работает.
+  **Найдено и исправлено:** без архива падал `COPY out/cach[e]` → `COPY ou[t]/cach[e]` (шаблон на каждой части пути).
+- **Коммиты:** локальный `main` — `5a97037` (документация с итогами Docker); снимок в `team_ml` — `69232c1` и дальше;
+  **пуш в `ml` — после проверки образа жюри** (Саша разрешил только ветку `ml`).
+- **В работе:** образ жюри (`ml-service/Dockerfile`, база pytorch ~3,5 ГБ качается в фоне, `D:\wsl\jury_pull.log`) →
+  `docker build` + прогон Речникова → сверка с `out/submission_OBJ-RECHNIKOV-7-7.json`.
 
 **Следующие шаги (по порядку, согласовать с Сашей в начале сессии):**
 1. **Сервис вокруг ML** (без него «неработающий прототип» → ≤ 6 баллов из 20, не в финал): backend (Node.js, REST +
