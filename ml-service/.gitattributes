@@ -1,0 +1,2 @@
+# Скрипты оболочки — всегда с LF: с CRLF bash их не запустит (Windows + core.autocrlf)
+*.sh text eol=lf

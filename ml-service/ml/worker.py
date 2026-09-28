@@ -29,6 +29,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ML_VERSION = "inspector-ml 2026.09.28 (19 параметров с извлечением + свободный поиск)"
 STEPS = 10          # 8 треков + рамки доказательств + целостность комплекта (строки лога ml.run)
+CACHE_FILES = None  # файлов в кэше распознанных страниц (считается при запуске serve, отдаётся в /health)
 
 
 def _read_manifest(meta_dir):
@@ -123,7 +124,8 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         if self.path == "/health":
-            self._send(200, {"status": "ok", "service": "inspector-ml-worker", "version": ML_VERSION})
+            self._send(200, {"status": "ok", "service": "inspector-ml-worker", "version": ML_VERSION,
+                             "ocr_cache_files": CACHE_FILES})
         else:
             self._send(404, {"ok": False, "error": "нет такого пути"})
 
@@ -203,6 +205,12 @@ def main(argv):
             _stdout_emit({"type": "failed", "process_id": job.get("process_id"), "error": str(e)})
         return 0
     if argv and argv[0] == "serve":
+        global CACHE_FILES
+        cache = Path(os.environ.get("INSPECTOR_CACHE") or ROOT / "out" / "cache")
+        CACHE_FILES = sum(1 for p in cache.rglob("*.json")) if cache.is_dir() else 0
+        print(f"кэш распознанных страниц {cache}: {CACHE_FILES} файлов"
+              + ("" if CACHE_FILES else " — сканы будут читаться только текстовым слоем (архив inspector_ml_assets.zip)"),
+              flush=True)
         port = int(os.environ.get("WORKER_PORT", 8000))
         url = os.environ.get("AMQP_URL")
         if url:

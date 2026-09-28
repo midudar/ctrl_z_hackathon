@@ -50,6 +50,26 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **28.09 — сервис сделан и проверен локально (backend, frontend, воркер, протокол PDF / DOCX / XML, docker-compose,
 тесты, документация) — раздел «Сервис (28.09)» ниже. Осталось: командный репозиторий, Docker-сборка, презентация.**
 
+**28.09, ночь — в работе: сборка Docker локально через WSL + README и документация** (Саша выбрал «локально через WSL»;
+в командном репозитории — **только ветка `ml`, `main` не трогать**; репозиторий пока **закрытый** — GitHub отдаёт 404,
+открыть может только владелец midudar). Docker Desktop нет; WSL не стартовал (`HCS_E_SERVICE_NOT_AVAILABLE`) — Саша
+включает «Платформу виртуальной машины» (`dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all
+/norestart` от администратора) и перезагружается. Зарегистрированная Ubuntu-22.04 пустая (диска нет) — не трогать.
+**После перезагрузки:** `wsl --install Ubuntu-24.04 --name inspector-docker --location D:\wsl\inspector-docker
+--web-download --no-launch` → `wsl -d inspector-docker -u root -- bash /mnt/d/hakaton/ltc/tools/wsl_docker.sh` (docker.io +
+compose + buildx) → держать WSL живым фоновой задачей (`wsl -d inspector-docker -u root -- sleep infinity`) → снимок в
+`team_ml` (закоммитить локальный `main`) → `git clone -b ml /mnt/d/hakaton/ltc ~/ctrl_z` внутри WSL (чистый клон) →
+распаковать `handover/inspector_ml_assets.zip` в `ml-service/` (архив актуален: 970 файлов кэша = диск) → `.env`
+(PACKAGE_DOCS / PACKAGE_DATA из `/mnt/d/hakaton/ltc/01_ПАКЕТ/…`, `PORT=8090` — на 8080 backend Windows) → `docker compose
+up --build` → проверки: 3 объекта, `demo_scenario.mjs` с `BASE=http://localhost:8090` (путь через RabbitMQ), протокол PDF /
+DOCX (REST воркера), без пакета (`down -v`, пустой старт); образ жюри `docker build` в `ml-service/` + прогон Речникова →
+сверка с `out/submission_*.json`. Уже сделано к сборке: порты compose через `.env` (`PORT`, `RABBITMQ_UI_PORT`), кэш и
+модели в Dockerfile необязательны (`COPY out/cach[e]`), воркер пишет число файлов кэша при старте и в `/health`.
+До перезагрузки (не закоммичено) переписаны `service/README.md` (корневой README команды: Docker, без Docker, «что
+посмотреть за 5 минут», стек, образ жюри, документация) и `docs/Инспектор_ИИ_сервис.md` (раздел 2 «Архитектура и стек»,
+раздел 9 — Docker подробно); скрипт `tools/wsl_docker.sh`. После сборки — дописать «Что проверено» (README и раздел 12
+документа сервиса: время сборки, что прошло), затем снимок и пуш в `ml`.
+
 **Следующие шаги (по порядку, согласовать с Сашей в начале сессии):**
 1. **Сервис вокруг ML** (без него «неработающий прототип» → ≤ 6 баллов из 20, не в финал): backend (Node.js, REST +
    OpenAPI, RabbitMQ → `ml.run`), протокол по Приложению 2 (PDF / DOCX), frontend (React: карточка кандидата с подсветкой,
@@ -173,7 +193,7 @@ TRAIN_data/                   data/ из TRAIN-архива: public_gold_checks.
   ```bash
   cd /d/hakaton/team_ml
   git rm -r -q --ignore-unmatch ml-service backend frontend docker-compose.yml .env.example .dockerignore .gitignore
-  git read-tree --prefix=ml-service/ -u main && git rm -r -q ml-service/service
+  git read-tree --prefix=ml-service/ -u main && git rm -r -q -f ml-service/service
   git read-tree --prefix=backend/ -u main:service/backend && git read-tree --prefix=frontend/ -u main:service/frontend
   for f in README.md docker-compose.yml .env.example .dockerignore .gitignore; do git show main:service/$f > $f; git add $f; done
   git commit -m "…" && git push
