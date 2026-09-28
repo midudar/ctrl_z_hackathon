@@ -16,8 +16,7 @@ _Команда `ctrl_z` · ЛЦТ 2026, кейс № 10 «Мосстройна�
 ## Запуск в Docker
 
 Нужны Docker Engine 24+ с Compose v2 (Docker Desktop или Docker в Linux), 4 ГБ свободной памяти и около 3 ГБ на диске
-(образы — 1,3 ГБ).
-GPU не нужен.
+(образы — 1,3 ГБ). GPU не нужен.
 
 ```bash
 git clone https://github.com/midudar/ctrl_z_hackathon.git
