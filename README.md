@@ -49,6 +49,10 @@ docker compose up --build
 Порты, пароли и пути задаются в `.env`. Остановить: `docker compose down`. Начать с чистого листа: `docker compose down -v`,
 при этом удаляются база и загруженные файлы.
 
+Если сборка не может скачать базовые образы, значит Docker Hub недоступен из вашей сети. Подключите зеркало
+Docker Hub: в `/etc/docker/daemon.json` (в Docker Desktop — Settings → Docker Engine) добавьте
+`{"registry-mirrors": ["https://mirror.gcr.io"]}` и перезапустите Docker.
+
 На Windows без Docker Desktop подойдёт Docker Engine внутри WSL2. Скрипт установки —
 [`ml-service/tools/wsl_docker.sh`](ml-service/tools/wsl_docker.sh), как его запустить, написано в начале файла.
 

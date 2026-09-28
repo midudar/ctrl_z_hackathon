@@ -13,11 +13,11 @@ COPY requirements-worker.txt .
 RUN pip install --no-cache-dir -r requirements-worker.txt
 
 COPY ml/ ml/
-# Кэш распознанных страниц (архив inspector_ml_assets.zip из GitHub Releases → out/cache/). Шаблон «cach[e]» делает его
+# Кэш распознанных страниц (архив inspector_ml_assets.zip из GitHub Releases → out/cache/). Шаблоны «ou[t]/cach[e]» делают его
 # необязательным: без архива образ тоже собирается, сканы тогда читаются только текстовым слоем (при запуске воркер
 # пишет в лог, сколько файлов кэша нашёл)
 RUN mkdir -p cache
-COPY out/cach[e] cache/
+COPY ou[t]/cach[e] cache/
 
 ENV PYTHONIOENCODING=utf-8 \
     PYTHONUNBUFFERED=1 \

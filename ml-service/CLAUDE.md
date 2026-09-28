@@ -55,7 +55,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 открыть может только владелец midudar). Docker Desktop нет; WSL не стартовал (`HCS_E_SERVICE_NOT_AVAILABLE`) — Саша
 включает «Платформу виртуальной машины» (`dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all
 /norestart` от администратора) и перезагружается. Зарегистрированная Ubuntu-22.04 пустая (диска нет) — не трогать.
-**После перезагрузки:** `wsl --install Ubuntu-24.04 --name inspector-docker --location D:\wsl\inspector-docker
+**Сделано после перезагрузки (22:40):** дистрибутив `inspector-docker` (Ubuntu 24.04, диск `D:\wsl\inspector-docker\ext4.vhdx`;
+образ скачан в `D:\wsl\Ubuntu-24.04.wsl`, SHA-256 сверен — `wsl --install` с `timeout` оборвал загрузку, поэтому `--from-file`),
+Docker Engine 29.1 + Compose 2.40 + buildx; локальный `main` закоммичен (`a609fd9`), снимок в `team_ml` — `6510ca1`
+(**не запушен**); чистый клон в WSL `~/ctrl_z`, архив распакован, `.env` — скрипт `D:\wsl\env.sh`; сборка — `D:\wsl\build.sh`
+→ лог `D:\wsl\build.log`. Команды в WSL — только файлом (`wsl -d inspector-docker -u root -e bash /mnt/d/wsl/x.sh`):
+`wsl -- bash -c '…'` теряет `$ПЕРЕМЕННЫЕ`. Интернет ~0,6 МБ/с — образ жюри (pytorch ~3,5 ГБ) под вопросом.
+**План после перезагрузки (исходный):** `wsl --install Ubuntu-24.04 --name inspector-docker --location D:\wsl\inspector-docker
 --web-download --no-launch` → `wsl -d inspector-docker -u root -- bash /mnt/d/hakaton/ltc/tools/wsl_docker.sh` (docker.io +
 compose + buildx) → держать WSL живым фоновой задачей (`wsl -d inspector-docker -u root -- sleep infinity`) → снимок в
 `team_ml` (закоммитить локальный `main`) → `git clone -b ml /mnt/d/hakaton/ltc ~/ctrl_z` внутри WSL (чистый клон) →
@@ -64,7 +70,7 @@ compose + buildx) → держать WSL живым фоновой задаче�
 up --build` → проверки: 3 объекта, `demo_scenario.mjs` с `BASE=http://localhost:8090` (путь через RabbitMQ), протокол PDF /
 DOCX (REST воркера), без пакета (`down -v`, пустой старт); образ жюри `docker build` в `ml-service/` + прогон Речникова →
 сверка с `out/submission_*.json`. Уже сделано к сборке: порты compose через `.env` (`PORT`, `RABBITMQ_UI_PORT`), кэш и
-модели в Dockerfile необязательны (`COPY out/cach[e]`), воркер пишет число файлов кэша при старте и в `/health`.
+модели в Dockerfile необязательны (`COPY ou[t]/cach[e]` — шаблон на каждой части пути, иначе без архива падает), воркер пишет число файлов кэша при старте и в `/health`.
 До перезагрузки (не закоммичено) переписаны `service/README.md` (корневой README команды: Docker, без Docker, «что
 посмотреть за 5 минут», стек, образ жюри, документация) и `docs/Инспектор_ИИ_сервис.md` (раздел 2 «Архитектура и стек»,
 раздел 9 — Docker подробно); скрипт `tools/wsl_docker.sh`. После сборки — дописать «Что проверено» (README и раздел 12

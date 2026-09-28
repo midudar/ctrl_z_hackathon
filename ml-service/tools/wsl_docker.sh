@@ -24,6 +24,15 @@ elif ! docker info >/dev/null 2>&1; then
 fi
 for _ in $(seq 60); do docker info >/dev/null 2>&1 && break; sleep 1; done
 
+# Если Docker Hub из этой сети недоступен (соединение с registry-1.docker.io зависает), образы docker.io берутся
+# через зеркало Google — mirror.gcr.io
+if ! timeout 10 curl -4 -s -o /dev/null https://registry-1.docker.io/v2/ && [ ! -f /etc/docker/daemon.json ]; then
+    echo "Docker Hub недоступен — включаю зеркало mirror.gcr.io"
+    printf '{\n  "registry-mirrors": ["https://mirror.gcr.io"]\n}\n' > /etc/docker/daemon.json
+    systemctl restart docker 2>/dev/null || service docker restart
+    for _ in $(seq 60); do docker info >/dev/null 2>&1 && break; sleep 1; done
+fi
+
 docker version --format 'Docker Engine {{.Server.Version}}'
 docker compose version
 docker buildx version

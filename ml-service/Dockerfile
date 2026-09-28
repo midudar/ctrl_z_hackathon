@@ -29,11 +29,12 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ml/ ml/
-# Модели EasyOCR и кэш распознанных страниц — из архива inspector_ml_assets.zip (GitHub Releases). Шаблоны «easyoc[r]»,
-# «cach[e]» делают их необязательными: без архива образ собирается, но сканы читаются только текстовым слоем
+# Модели EasyOCR и кэш распознанных страниц — из архива inspector_ml_assets.zip (GitHub Releases). Шаблоны «model[s]/easyoc[r]»,
+# «ou[t]/cach[e]» делают их необязательными (шаблон нужен на каждой части пути: без архива в контексте сборки нет
+# и самой папки out/): образ собирается, но сканы читаются только текстовым слоем
 RUN mkdir -p models/easyocr cache
-COPY models/easyoc[r] models/easyocr/
-COPY out/cach[e] cache/
+COPY model[s]/easyoc[r] models/easyocr/
+COPY ou[t]/cach[e] cache/
 
 ENV PYTHONIOENCODING=utf-8 \
     PYTHONUNBUFFERED=1 \
