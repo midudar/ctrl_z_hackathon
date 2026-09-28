@@ -1,0 +1,72 @@
+# Инспектор ИИ — запуск одной командой: docker compose up --build
+#   http://localhost:8080          интерфейс (логин / пароль: inspector / inspector)
+#   http://localhost:8080/api/docs Swagger UI (OpenAPI 3.0)
+#   http://localhost:15672         RabbitMQ (inspector / inspector)
+# Пути к документам пакета и папке ML задаются в .env (пример — .env.example).
+name: inspector
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    environment:
+      # guest в RabbitMQ пускают только с localhost — для соседних контейнеров нужен свой пользователь
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-inspector}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS:-inspector}
+    ports:
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 10s
+      retries: 12
+    restart: unless-stopped
+
+  ml-worker:
+    build:
+      context: ${ML_DIR:-./ml-service}
+      dockerfile: Dockerfile.worker
+    environment:
+      AMQP_URL: amqp://${RABBITMQ_USER:-inspector}:${RABBITMQ_PASS:-inspector}@rabbitmq:5672
+      WORKER_PORT: "8000"
+    volumes:
+      # пути внутри контейнеров одинаковые у воркера и backend: в задачах передаются абсолютные пути
+      - ${PACKAGE_DOCS:-./data/package/docs}:/input/docs:ro
+      - service-data:/data
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      AMQP_URL: amqp://${RABBITMQ_USER:-inspector}:${RABBITMQ_PASS:-inspector}@rabbitmq:5672
+      ML_HTTP_URL: http://ml-worker:8000
+      DATA_DIR: /data
+      PACKAGE_DOCS: /input/docs
+      PACKAGE_DATA: /input/data
+      SEED_RESULTS: /seed
+      ML_CACHE_DIR: /app/cache          # путь внутри контейнера воркера (кэш распознанных страниц в его образе)
+      JWT_SECRET: ${JWT_SECRET:-}
+      PASS_INSPECTOR: ${PASS_INSPECTOR:-inspector}
+      PASS_SUPERVISOR: ${PASS_SUPERVISOR:-supervisor}
+      PASS_ADMIN: ${PASS_ADMIN:-admin}
+      PASS_ML: ${PASS_ML:-ml}
+    volumes:
+      - ${PACKAGE_DOCS:-./data/package/docs}:/input/docs:ro
+      - ${PACKAGE_DATA:-./data/package/data}:/input/data:ro
+      - ${SEED_RESULTS:-./ml-service/out}:/seed:ro
+      - service-data:/data
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      ml-worker:
+        condition: service_started
+    restart: unless-stopped
+
+volumes:
+  service-data:

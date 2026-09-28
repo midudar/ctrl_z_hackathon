@@ -1,0 +1,7 @@
+# Контекст сборки backend: нужны только backend/ и frontend/ (ML-воркер собирается из ml-service/ со своим .dockerignore)
+**/node_modules
+**/dist
+data
+**/.env
+ml-service
+*.pdf

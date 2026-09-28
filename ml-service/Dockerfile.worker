@@ -1,0 +1,27 @@
+# Инспектор ИИ — Python-воркер сервиса (docker-compose): задачи из RabbitMQ → ml.run → протокол и картинки страниц.
+# Лёгкий образ без CUDA и torch: для ml.run они не нужны (OCR сканов — из готового кэша /app/cache).
+# Образ для стенда жюри (GPU, entrypoint ml.run) — Dockerfile рядом.
+FROM python:3.12-slim
+
+# fonts-dejavu-core — кириллица в протоколе PDF; libarchive-tools — bsdtar для архивов .7z / .rar (ml/integrity.py)
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends fonts-dejavu-core libarchive-tools \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+COPY requirements-worker.txt .
+RUN pip install --no-cache-dir -r requirements-worker.txt
+
+COPY ml/ ml/
+COPY out/cache/ cache/
+
+ENV PYTHONIOENCODING=utf-8 \
+    PYTHONUNBUFFERED=1 \
+    INSPECTOR_ROOT=/app \
+    INSPECTOR_CACHE=/app/cache \
+    WORKER_PORT=8000
+
+EXPOSE 8000
+HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=3)"
+CMD ["python", "-m", "ml.worker", "serve"]

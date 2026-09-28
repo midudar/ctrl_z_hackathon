@@ -5,3 +5,4 @@
 !requirements.txt
 !out/cache/
 **/__pycache__
+!requirements-worker.txt

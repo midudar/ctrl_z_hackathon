@@ -1,0 +1,8 @@
+# Воркер сервиса (docker-compose): ml.run, картинки страниц, протокол, RabbitMQ. Без torch и EasyOCR — OCR в прогоне
+# не запускается, распознанный текст сканов берётся из кэша /app/cache (он копируется в образ)
+pymupdf==1.28.*
+jsonschema==4.*
+numpy>=1.26
+opencv-python-headless>=4.9
+python-docx==1.*
+pika==1.3.*

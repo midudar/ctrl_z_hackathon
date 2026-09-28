@@ -1,0 +1,21 @@
+{
+  "name": "inspector-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Инспектор ИИ — интерфейс инспектора (React)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.2.0",
+    "vite": "^7.3.6"
+  }
+}

@@ -1,0 +1,605 @@
+openapi: 3.0.3
+info:
+  title: Инспектор ИИ — API
+  version: 1.0.0
+  description: |
+    Сервис сверки проектной (ПД), рабочей (РД) и исполнительной (ИД) документации по матрице 132 параметров
+    (кейс «Мосстройнадзор»). Система **не выносит вердикт**: она готовит кандидатов в нарушения с карточкой
+    доказательств, решение принимает инспектор.
+
+    Порядок работы (асинхронная pull-модель, ТЗ 1.4):
+    1. `POST /auth/login` → токен; дальше заголовок `Authorization: Bearer <токен>`.
+    2. `POST /objects` — объект; `POST /documents/upload` — файлы со стадией → `process_id`.
+    3. `GET /processes/{processId}` — статус (PENDING → PARSING → READY); `GET /processes/{processId}/result` — ответ.
+    4. `GET /protocols/{protocolId}/checks?kind=candidate` — кандидаты; `PUT …/decision` — решение инспектора.
+    5. `POST /protocols/{protocolId}/finalize`; `GET /protocols/{protocolId}/export?format=pdf|docx|xml|json`.
+
+    Учётные записи стенда: inspector / inspector, supervisor / supervisor, admin / admin, ml / ml.
+servers:
+  - url: /api/v1
+security:
+  - bearerAuth: []
+tags:
+  - name: Вход
+  - name: Справочники
+  - name: Объекты и документы
+  - name: Обработка
+  - name: Протоколы и верификация
+  - name: Интеграция
+  - name: Администрирование
+paths:
+  /health:
+    get:
+      tags: [Администрирование]
+      summary: Состояние сервиса
+      security: []
+      responses:
+        '200': { description: Работает, content: { application/json: { schema: { type: object } } } }
+  /metrics:
+    get:
+      tags: [Администрирование]
+      summary: Метрики в формате Prometheus
+      security: []
+      responses:
+        '200': { description: Метрики, content: { text/plain: { schema: { type: string } } } }
+  /openapi.yaml:
+    get:
+      tags: [Администрирование]
+      summary: Эта спецификация (YAML)
+      security: []
+      responses:
+        '200': { description: Спецификация, content: { text/yaml: { schema: { type: string } } } }
+  /openapi.json:
+    get:
+      tags: [Администрирование]
+      summary: Эта спецификация (JSON)
+      security: []
+      responses:
+        '200': { description: Спецификация, content: { application/json: { schema: { type: object } } } }
+
+  /auth/login:
+    post:
+      tags: [Вход]
+      summary: Вход по логину и паролю
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [login, password]
+              properties:
+                login: { type: string, minLength: 1, maxLength: 100 }
+                password: { type: string, minLength: 1, maxLength: 200 }
+      responses:
+        '200':
+          description: Токен и пользователь
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token: { type: string }
+                  user: { $ref: '#/components/schemas/User' }
+        '401': { $ref: '#/components/responses/Error' }
+        '429': { $ref: '#/components/responses/Error' }
+  /auth/me:
+    get:
+      tags: [Вход]
+      summary: Текущий пользователь и его права
+      responses:
+        '200': { description: Пользователь, content: { application/json: { schema: { $ref: '#/components/schemas/User' } } } }
+        '401': { $ref: '#/components/responses/Error' }
+
+  /reference:
+    get:
+      tags: [Справочники]
+      summary: Причины отклонения, статусы, стадии, лимиты загрузки
+      responses:
+        '200': { description: Справочники, content: { application/json: { schema: { type: object } } } }
+  /params:
+    get:
+      tags: [Справочники]
+      summary: Матрица 132 параметров (+ свободный поиск)
+      responses:
+        '200':
+          description: Параметры
+          content:
+            application/json:
+              schema: { type: array, items: { $ref: '#/components/schemas/Param' } }
+
+  /objects:
+    get:
+      tags: [Объекты и документы]
+      summary: Объекты с цветовой индикацией (дашборд)
+      responses:
+        '200':
+          description: Объекты
+          content:
+            application/json:
+              schema: { type: array, items: { $ref: '#/components/schemas/Object' } }
+    post:
+      tags: [Объекты и документы]
+      summary: Создать объект капитального строительства
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ObjectCreate' }
+      responses:
+        '201': { description: Создан, content: { application/json: { schema: { $ref: '#/components/schemas/Object' } } } }
+        '409': { $ref: '#/components/responses/Error' }
+  /objects/{objectId}:
+    parameters: [{ $ref: '#/components/parameters/objectId' }]
+    get:
+      tags: [Объекты и документы]
+      summary: Объект, статус загрузки стадий, последний протокол и процесс
+      responses:
+        '200': { description: Объект, content: { application/json: { schema: { $ref: '#/components/schemas/Object' } } } }
+        '404': { $ref: '#/components/responses/Error' }
+    patch:
+      tags: [Объекты и документы]
+      summary: Изменить сведения об объекте (для шапки протокола)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ObjectPatch' }
+      responses:
+        '200': { description: Объект, content: { application/json: { schema: { $ref: '#/components/schemas/Object' } } } }
+  /objects/{objectId}/files:
+    parameters: [{ $ref: '#/components/parameters/objectId' }]
+    get:
+      tags: [Объекты и документы]
+      summary: Файлы объекта (реестр)
+      responses:
+        '200':
+          description: Файлы
+          content:
+            application/json:
+              schema: { type: array, items: { $ref: '#/components/schemas/File' } }
+  /documents/upload:
+    post:
+      tags: [Объекты и документы]
+      summary: Загрузка или дозагрузка файлов стадии → process_id
+      description: |
+        Форматы PDF, DOCX, XML; не больше 50 МБ на файл и 200 МБ на пакет. Повреждённые PDF и дубли (тот же SHA-256)
+        отклоняются с пояснением, остальные принимаются. Если `start` не равен `false`, сразу запускается проверка.
+        После финализации протокола дозагрузка запрещена (409).
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [object_id, stage, files]
+              properties:
+                object_id: { type: string }
+                stage: { type: string, enum: [PD, RD, ID] }
+                section: { type: string, enum: [AUTO, KR, AR, OV, VK, EOM, SS, GP, PB, POS, OTHER], default: AUTO }
+                start: { type: string, enum: ['true', 'false'], default: 'true' }
+                files: { type: array, items: { type: string, format: binary } }
+      responses:
+        '202':
+          description: Файлы приняты, проверка поставлена в очередь
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/UploadResult' }
+        '409': { $ref: '#/components/responses/Error' }
+        '413': { $ref: '#/components/responses/Error' }
+        '422':
+          description: Ни один файл не принят
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/UploadResult' }
+
+  /objects/{objectId}/inspections:
+    parameters: [{ $ref: '#/components/parameters/objectId' }]
+    post:
+      tags: [Обработка]
+      summary: Запустить проверку объекта → process_id
+      responses:
+        '202':
+          description: В очереди
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  process_id: { type: string }
+                  object_id: { type: string }
+                  status: { type: string }
+        '409': { $ref: '#/components/responses/Error' }
+  /processes:
+    get:
+      tags: [Обработка]
+      summary: Процессы обработки
+      parameters:
+        - { name: object_id, in: query, schema: { type: string } }
+      responses:
+        '200':
+          description: Процессы
+          content:
+            application/json:
+              schema: { type: array, items: { $ref: '#/components/schemas/Process' } }
+  /processes/{processId}:
+    parameters: [{ $ref: '#/components/parameters/processId' }]
+    get:
+      tags: [Обработка]
+      summary: Статус процесса (эндпоинт мониторинга)
+      description: 'Статусы по ТЗ 9.1: PENDING, PARSING, READY, VERIFYING, COMPLETED, FINALIZED; при сбое — FAILED.'
+      responses:
+        '200': { description: Процесс, content: { application/json: { schema: { $ref: '#/components/schemas/Process' } } } }
+        '404': { $ref: '#/components/responses/Error' }
+  /processes/{processId}/result:
+    parameters: [{ $ref: '#/components/parameters/processId' }]
+    get:
+      tags: [Обработка]
+      summary: Результат проверки (submission) — pull-модель
+      responses:
+        '200': { description: Ответ по всем параметрам, content: { application/json: { schema: { type: object } } } }
+        '202': { description: Ещё не готов, content: { application/json: { schema: { type: object } } } }
+        '409': { $ref: '#/components/responses/Error' }
+
+  /objects/{objectId}/protocols:
+    parameters: [{ $ref: '#/components/parameters/objectId' }]
+    get:
+      tags: [Протоколы и верификация]
+      summary: Версии протоколов объекта
+      responses:
+        '200': { description: Версии, content: { application/json: { schema: { type: array, items: { type: object } } } } }
+  /protocols/{protocolId}:
+    parameters: [{ $ref: '#/components/parameters/protocolId' }]
+    get:
+      tags: [Протоколы и верификация]
+      summary: Протокол — статус, сводка, статус загрузки, целостность комплекта, доступные действия
+      responses:
+        '200': { description: Протокол, content: { application/json: { schema: { $ref: '#/components/schemas/Protocol' } } } }
+        '404': { $ref: '#/components/responses/Error' }
+  /protocols/{protocolId}/checks:
+    parameters: [{ $ref: '#/components/parameters/protocolId' }]
+    get:
+      tags: [Протоколы и верификация]
+      summary: Строки протокола (доказательные группы) с фильтрами
+      parameters:
+        - name: kind
+          allowReserved: true
+          in: query
+          description: 'candidate, manual, negative, missing, stub — через запятую'
+          schema: { type: string, pattern: '^(candidate|manual|negative|missing|stub)(,(candidate|manual|negative|missing|stub))*$' }
+        - { name: criticality, in: query, schema: { type: string, enum: [critical, significant] } }
+        - { name: decision, in: query, schema: { type: string, enum: [PENDING, CONFIRMED_VIOLATION, NEGATIVE_VERIFIED, CLARIFICATION_REQUIRED] } }
+        - { name: q, in: query, description: 'Поиск по коду, месту, названию, значениям', schema: { type: string, maxLength: 200 } }
+      responses:
+        '200':
+          description: Строки
+          content:
+            application/json:
+              schema: { type: array, items: { $ref: '#/components/schemas/Check' } }
+  /protocols/{protocolId}/checks/{checkId}:
+    parameters: [{ $ref: '#/components/parameters/protocolId' }, { $ref: '#/components/parameters/checkId' }]
+    get:
+      tags: [Протоколы и верификация]
+      summary: Карточка доказательств
+      responses:
+        '200': { description: Карточка, content: { application/json: { schema: { $ref: '#/components/schemas/CheckCard' } } } }
+        '404': { $ref: '#/components/responses/Error' }
+  /protocols/{protocolId}/checks/{checkId}/decision:
+    parameters: [{ $ref: '#/components/parameters/protocolId' }, { $ref: '#/components/parameters/checkId' }]
+    put:
+      tags: [Протоколы и верификация]
+      summary: Решение инспектора
+      description: |
+        CONFIRMED_VIOLATION — нарушение подтверждено (комментарий и рекомендация необязательны, рекомендация по умолчанию —
+        шаблон); NEGATIVE_VERIFIED — отклонено, обязательны reason_code и комментарий; CLARIFICATION_REQUIRED — требует
+        уточнения. Решение фиксирует пользователя и время, пишется в журнал аудита.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/DecisionRequest' }
+      responses:
+        '200': { description: Сохранено, content: { application/json: { schema: { type: object } } } }
+        '400': { $ref: '#/components/responses/Error' }
+        '409': { $ref: '#/components/responses/Error' }
+    delete:
+      tags: [Протоколы и верификация]
+      summary: Отменить решение (до финализации)
+      responses:
+        '200': { description: Отменено, content: { application/json: { schema: { type: object } } } }
+        '409': { $ref: '#/components/responses/Error' }
+  /protocols/{protocolId}/finalize:
+    parameters: [{ $ref: '#/components/parameters/protocolId' }]
+    post:
+      tags: [Протоколы и верификация]
+      summary: Финализировать протокол (все кандидаты обработаны)
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                comment: { type: string, maxLength: 2000 }
+      responses:
+        '200': { description: Финализирован, content: { application/json: { schema: { type: object } } } }
+        '409': { $ref: '#/components/responses/Error' }
+  /protocols/{protocolId}/unfinalize:
+    parameters: [{ $ref: '#/components/parameters/protocolId' }]
+    post:
+      tags: [Протоколы и верификация]
+      summary: Отменить финализацию (супервизор или администратор, с причиной)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [reason]
+              properties:
+                reason: { type: string, minLength: 1, maxLength: 2000 }
+      responses:
+        '200': { description: Отменена, content: { application/json: { schema: { type: object } } } }
+        '403': { $ref: '#/components/responses/Error' }
+  /protocols/{protocolId}/export:
+    parameters: [{ $ref: '#/components/parameters/protocolId' }]
+    get:
+      tags: [Протоколы и верификация]
+      summary: Протокол по образцу Приложения 2 — PDF, DOCX, XML или JSON
+      parameters:
+        - { name: format, in: query, schema: { type: string, enum: [pdf, docx, xml, json], default: pdf } }
+        - { $ref: '#/components/parameters/token' }
+      responses:
+        '200':
+          description: Файл протокола
+          content:
+            application/pdf: { schema: { type: string, format: binary } }
+            application/vnd.openxmlformats-officedocument.wordprocessingml.document: { schema: { type: string, format: binary } }
+            application/xml: { schema: { type: string } }
+            application/json: { schema: { type: object } }
+  /protocols/{protocolId}/integrity:
+    parameters: [{ $ref: '#/components/parameters/protocolId' }]
+    get:
+      tags: [Протоколы и верификация]
+      summary: Полный отчёт о целостности комплекта
+      responses:
+        '200': { description: Отчёт, content: { application/json: { schema: { type: object } } } }
+
+  /files/{fileId}/pages/{page}:
+    parameters:
+      - { $ref: '#/components/parameters/fileId' }
+      - { name: page, in: path, required: true, schema: { type: integer, minimum: 1 } }
+      - { name: max, in: query, description: 'Длинная сторона картинки, пикселей', schema: { type: integer, minimum: 400, maximum: 4000 } }
+      - { name: region, in: query, allowReserved: true, description: 'Часть страницы x0,y0,x1,y1 в долях видимой страницы', schema: { type: string, pattern: '^[0-9.]+,[0-9.]+,[0-9.]+,[0-9.]+$' } }
+      - { $ref: '#/components/parameters/token' }
+    get:
+      tags: [Объекты и документы]
+      summary: Картинка видимой страницы PDF (для подсветки bbox_norm)
+      responses:
+        '200': { description: PNG, content: { image/png: { schema: { type: string, format: binary } } } }
+        '404': { $ref: '#/components/responses/Error' }
+  /files/{fileId}/download:
+    parameters: [{ $ref: '#/components/parameters/fileId' }, { $ref: '#/components/parameters/token' }]
+    get:
+      tags: [Объекты и документы]
+      summary: Исходный файл
+      responses:
+        '200': { description: Файл, content: { application/octet-stream: { schema: { type: string, format: binary } } } }
+
+  /inspection/{processId}:
+    parameters: [{ $ref: '#/components/parameters/processId' }]
+    post:
+      tags: [Интеграция]
+      summary: Передача результатов в ИАИС «РиН» (только PROTOCOL_FINALIZED)
+      description: Передаются только подтверждённые инспектором нарушения, версии протокола, матрицы, модели и реестр входных файлов.
+      responses:
+        '200': { description: Передано, content: { application/json: { schema: { type: object } } } }
+        '202': { description: 'Пакет сформирован, синхронизация отложена (PENDING_SYNC)', content: { application/json: { schema: { type: object } } } }
+        '409': { $ref: '#/components/responses/Error' }
+
+  /audit:
+    get:
+      tags: [Администрирование]
+      summary: Журнал аудита (супервизор, администратор, ML-инженер)
+      parameters:
+        - { name: object_id, in: query, schema: { type: string } }
+        - { name: action, in: query, schema: { type: string } }
+        - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 1000 } }
+        - { name: offset, in: query, schema: { type: integer, minimum: 0 } }
+      responses:
+        '200': { description: Записи, content: { application/json: { schema: { type: array, items: { $ref: '#/components/schemas/AuditEntry' } } } } }
+        '403': { $ref: '#/components/responses/Error' }
+  /ml/feedback-dataset:
+    get:
+      tags: [Администрирование]
+      summary: Черновик GOLD-набора из решений инспекторов (ML-инженер, администратор)
+      responses:
+        '200': { description: JSON Lines, content: { application/x-ndjson: { schema: { type: string } } } }
+  /users:
+    get:
+      tags: [Администрирование]
+      summary: Пользователи (администратор)
+      responses:
+        '200': { description: Пользователи, content: { application/json: { schema: { type: array, items: { type: object } } } } }
+
+components:
+  securitySchemes:
+    bearerAuth: { type: http, scheme: bearer, bearerFormat: JWT }
+  parameters:
+    objectId: { name: objectId, in: path, required: true, schema: { type: string, pattern: '^[A-Za-z0-9._-]{1,80}$' } }
+    processId: { name: processId, in: path, required: true, schema: { type: string, format: uuid } }
+    protocolId: { name: protocolId, in: path, required: true, schema: { type: integer, minimum: 1 } }
+    checkId: { name: checkId, in: path, required: true, schema: { type: integer, minimum: 1 } }
+    fileId: { name: fileId, in: path, required: true, schema: { type: string, pattern: '^[A-Za-z0-9_-]{1,40}$' } }
+    token: { name: token, in: query, required: false, description: Токен для ссылок и картинок (вместо заголовка), schema: { type: string } }
+  responses:
+    Error:
+      description: Ошибка
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+  schemas:
+    Error:
+      type: object
+      properties:
+        code: { type: string, example: PROTOCOL_FINALIZED }
+        message: { type: string }
+        details: {}
+        request_id: { type: string }
+    User:
+      type: object
+      properties:
+        id: { type: integer }
+        login: { type: string }
+        full_name: { type: string }
+        role: { type: string, enum: [inspector, supervisor, admin, ml_engineer] }
+        role_name: { type: string }
+        permissions: { type: array, items: { type: string } }
+    Param:
+      type: object
+      properties:
+        code: { type: string, example: KR-055 }
+        param_id: { type: integer }
+        section: { type: string }
+        name: { type: string }
+        trigger: { type: string }
+        criticality: { type: string }
+        in_matrix: { type: boolean }
+    ObjectCreate:
+      type: object
+      additionalProperties: false
+      required: [name]
+      properties:
+        object_id: { type: string, pattern: '^OBJ-[A-Z0-9-]{2,60}$', description: Код объекта; если не задан — генерируется }
+        name: { type: string, minLength: 1, maxLength: 300 }
+        address: { type: string, maxLength: 500 }
+        developer: { type: string, maxLength: 300, description: Застройщик }
+        contractor: { type: string, maxLength: 300, description: Подрядчик }
+        case_number: { type: string, maxLength: 100, description: Номер надзорного дела }
+        permit_number: { type: string, maxLength: 100 }
+    ObjectPatch:
+      type: object
+      additionalProperties: false
+      properties:
+        name: { type: string, minLength: 1, maxLength: 300 }
+        address: { type: string, nullable: true, maxLength: 500 }
+        developer: { type: string, nullable: true, maxLength: 300 }
+        contractor: { type: string, nullable: true, maxLength: 300 }
+        case_number: { type: string, nullable: true, maxLength: 100 }
+        permit_number: { type: string, nullable: true, maxLength: 100 }
+    Object:
+      type: object
+      properties:
+        object_id: { type: string }
+        name: { type: string }
+        indicator: { type: string, enum: [green, yellow, red, gray], description: 'красный — есть подтверждённые нарушения; жёлтый — кандидаты ждут решения; зелёный — всё обработано, нарушений нет; серый — протокола нет' }
+        files: { type: object }
+        stages: { type: array, items: { type: object } }
+        protocol: { type: object, nullable: true }
+        process: { type: object, nullable: true }
+    File:
+      type: object
+      properties:
+        file_id: { type: string }
+        stage: { type: string }
+        section: { type: string }
+        name: { type: string }
+        size_bytes: { type: integer }
+        sha256: { type: string }
+        source: { type: string, enum: [package, upload] }
+    UploadResult:
+      type: object
+      properties:
+        process_id: { type: string, nullable: true }
+        object_id: { type: string }
+        accepted: { type: array, items: { type: object } }
+        rejected:
+          type: array
+          items:
+            type: object
+            properties:
+              name: { type: string }
+              reason: { type: string }
+    Process:
+      type: object
+      properties:
+        process_id: { type: string }
+        object_id: { type: string }
+        status: { type: string, enum: [PENDING, PARSING, READY, VERIFYING, COMPLETED, FINALIZED, FAILED] }
+        message: { type: string }
+        progress: { type: number }
+        protocol_id: { type: integer, nullable: true }
+        log: { type: string }
+    Protocol:
+      type: object
+      properties:
+        protocol_id: { type: integer }
+        version: { type: integer }
+        status: { type: string, enum: [READY, VERIFYING, VERIFICATION_COMPLETED, PROTOCOL_FINALIZED] }
+        scenario: { type: string, enum: [FULL, PD_RD_ONLY, PD_ID_ONLY, RD_ID_ONLY, SINGLE_ONLY, NO_DOCUMENTS] }
+        summary: { type: object }
+        stages: { type: array, items: { type: object } }
+        integrity: { type: array, items: { type: object } }
+        actions: { type: object }
+    Evidence:
+      type: object
+      properties:
+        stage: { type: string, enum: [PD, RD, ID] }
+        file_id: { type: string }
+        file_name: { type: string }
+        page: { type: integer }
+        bbox_norm: { type: array, nullable: true, items: { type: number }, minItems: 4, maxItems: 4 }
+        bbox_source: { type: string }
+        fragment: { type: string }
+    Check:
+      type: object
+      properties:
+        check_id: { type: integer }
+        evidence_group_id: { type: string }
+        parameter_code: { type: string }
+        parameter_name: { type: string }
+        location: { type: string }
+        kind: { type: string, enum: [candidate, manual, negative, missing, stub] }
+        finding_status: { type: string, enum: [CANDIDATE, NEGATIVE_VERIFIED, MISSING_EVIDENCE, NOT_COMPARABLE] }
+        criticality: { type: string }
+        review_priority: { type: string, enum: [HIGH, MEDIUM, LOW] }
+        pd_value: { type: string, nullable: true }
+        rd_value: { type: string, nullable: true }
+        id_value: { type: string, nullable: true }
+        note: { type: string, nullable: true }
+        decision: { type: object, nullable: true }
+        evidence: { type: array, items: { $ref: '#/components/schemas/Evidence' } }
+    CheckCard:
+      allOf:
+        - $ref: '#/components/schemas/Check'
+        - type: object
+          properties:
+            parameter: { type: object }
+            deviation: { type: string }
+            recommendation_template: { type: string }
+            files: { type: array, items: { type: object } }
+    DecisionRequest:
+      type: object
+      additionalProperties: false
+      required: [status]
+      properties:
+        status: { type: string, enum: [CONFIRMED_VIOLATION, NEGATIVE_VERIFIED, CLARIFICATION_REQUIRED] }
+        reason_code: { type: string, enum: [WRONG_REVISION, APPROVED_CHANGE, OCR_ERROR, BINDING_ERROR, EXTRACTION_ERROR, NOT_APPLICABLE, OTHER] }
+        comment: { type: string, maxLength: 4000 }
+        recommendation: { type: string, maxLength: 4000 }
+    AuditEntry:
+      type: object
+      properties:
+        id: { type: integer }
+        ts: { type: string }
+        user_login: { type: string, nullable: true }
+        action: { type: string }
+        action_name: { type: string }
+        object_id: { type: string, nullable: true }
+        details: { type: object, nullable: true }
+        ip: { type: string, nullable: true }
+        user_agent: { type: string, nullable: true }

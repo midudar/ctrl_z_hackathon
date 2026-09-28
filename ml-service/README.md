@@ -166,3 +166,18 @@ python -m ml.review_pdf OBJ-TYUMENSKAYA-5-GOLD-SEED IOS4-078:140                
 ```
 
 `python -m ml.concrete … compare` перезаписывает ответ только треком КР — итоговый ответ собирать через `ml.run`.
+
+## Модули сервиса (28.09)
+
+Сервис вокруг ML (интерфейс, REST API, очередь, протокол) описан в
+[docs/Инспектор_ИИ_сервис.md](docs/Инспектор_ИИ_сервис.md). В этой папке к нему относятся:
+
+```bash
+python -m ml.worker serve                  # воркер: задачи из RabbitMQ (AMQP_URL) + REST /render, /protocol, /health (порт 8000)
+python -m ml.worker job <задача.json>      # одна задача: ml.run → картинки страниц-доказательств; события — JSON в stdout
+python -m ml.render <файл.pdf> 13 page.png --max 2000 --region 0.1,0.6,0.8,0.75   # страница или её область
+python -m ml.protocol <данные.json> protocol.pdf       # протокол по Приложению 2 (PDF или DOCX) по данным от backend
+```
+
+`Dockerfile.worker` + `requirements-worker.txt` — лёгкий образ воркера для docker-compose (без CUDA и torch;
+кэш `out/cache/` копируется в образ). `Dockerfile` — по-прежнему образ для стенда жюри с точкой входа `ml.run`.

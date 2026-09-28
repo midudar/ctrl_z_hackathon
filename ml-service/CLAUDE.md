@@ -38,13 +38,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   интерфейс, протокол по Приложению 2) и `docs/Инспектор_ИИ_ML_для_презентации.md` (цифры, примеры, слайды, вопросы
   жюри). Слайды — `python -m ml.slides_pdf` → `Инспектор_ИИ_материалы_для_презентации.pdf` + `handover/slides/`.
 - Командный репозиторий `git@github.com:midudar/ctrl_z_hackathon.git`, ветка **`ml`**, папка `ml-service/` (снимки
-  локального `main`, как обновлять — в «Файловая структура»). Последний снимок = локальный `main` на 27.09.
+  локального `main`, как обновлять — в «Файловая структура»). Последний снимок — 28.09, вечер: ML + сервис (backend,
+  frontend, docker-compose, README в корне ветки `ml`); `main` командного репозитория пока не тронут.
 - **GitHub Releases пуст** — Саша ещё не выкладывал `handover/inspector_ml_assets.zip` (кэш OCR + модели, без него
   `docker build` падает) и `handover/inspector_ml_slides.zip` (слайды). Выкладывает он через сайт (утилиты `gh` нет).
 
 **Ответы Саши 27.09:** у команды **ничего нет** (ни фронта, ни бэка, ни макетов); есть ли у кого-то Docker — неизвестно.
 Требования платформы ЛЦТ к сдаче — в «Сдача: доска оценивания и сервис вокруг ML» (публичный репозиторий с README в корне,
 документация, презентация, **работающий прототип** или скринкаст / Swagger, доп. материалы).
+
+**28.09 — сервис сделан и проверен локально (backend, frontend, воркер, протокол PDF / DOCX / XML, docker-compose,
+тесты, документация) — раздел «Сервис (28.09)» ниже. Осталось: командный репозиторий, Docker-сборка, презентация.**
 
 **Следующие шаги (по порядку, согласовать с Сашей в начале сессии):**
 1. **Сервис вокруг ML** (без него «неработающий прототип» → ≤ 6 баллов из 20, не в финал): backend (Node.js, REST +
@@ -56,6 +60,48 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
    или скринкаст; лицензии сторонних библиотек (PyMuPDF — AGPL-3.0) — проверяются при допуске.
 3. Release с двумя архивами (делает Саша) и сборка Docker-образа тем, у кого есть Docker.
 4. ML (если останется время): OCR сканов прямо в `ml.run`, новые параметры (таблицы ТЭП, спецификации АР).
+
+## Сервис (28.09) — `service/` + `ml/worker.py`, `ml/render.py`, `ml/protocol.py`
+
+- **backend** `service/backend` (Node 24, Express 5, встроенный `node:sqlite`, без нативной сборки): REST `/api/v1`,
+  контракт `openapi.yaml` (запросы проверяются express-openapi-validator; Swagger UI — `/api/docs`), вход по логину и
+  паролю (JWT HS256, scrypt), роли inspector / supervisor / admin / ml_engineer (стенд: логин = пароль), журнал аудита,
+  JSON-логи (поля ТЗ 13), метрики Prometheus `/api/v1/metrics`. Первый запуск регистрирует 3 объекта пакета и импортирует
+  `out/submission_*.json` как протокол v1. Данные — `service/data/` (в .gitignore). Запуск: `cd service/backend && npm start`
+  (`.env`: `PYTHON=…python.exe`), порт 8080. Остановка на ноутбуке — убить node по порту (TaskStop убивает только npm).
+- **Очередь:** `AMQP_URL` задан → RabbitMQ (`inspector.jobs` / `inspector.events`), иначе backend сам запускает
+  `python -m ml.worker job <задача.json>`. Картинки страниц и протокол: `ML_HTTP_URL` → REST воркера (`ml.worker serve`),
+  иначе процесс python. **Путь RabbitMQ не проверен** (брокера на ноутбуке нет), локальный — проверен сквозным прогоном
+  Новослободской через API (протокол v2 за ~1,5 мин).
+- **Протокол** `ml/protocol.py` (PDF — PyMuPDF Story + ручные страницы карточек, DOCX — python-docx) по данным от backend
+  (`protocol-data.js`: 7 разделов Приложения 2 + приложения А карточки доказательств с вырезками и рамкой, Б отрицательные,
+  В целостность); XML и JSON — в backend. Тюменская: PDF 9,7 с / 3,7 МБ. Грабли: `insert_htmlbox` встраивает шрифт на каждый
+  вызов — спасает `garbage=4`; картинки в таблицах Story ломаются на границе страниц — карточки рисуются вручную.
+- **frontend** `service/frontend` (React 19 + Vite 7, без UI-библиотек): вход, дашборд с индикатором, объект (статус
+  стадий, обработка, протокол: сводка, выгрузка, финализация, вкладки по видам строк, комплект, файлы, история), карточка
+  кандидата (значения ПД / РД / ИД, вырезки страниц с рамкой `bbox_norm` через `?region=`, решение 1 / 3 / 1 клик, клавиши),
+  журнал аудита. Сборка `npm run build` → `dist/`, её раздаёт backend. Проверка в браузере — `D:\hakaton\ui_check`
+  (puppeteer-core + установленный Edge; `node shots.mjs shots`, `flow.mjs` — верификация и финализация Тюменской,
+  `upload.mjs` — новый объект из 4 файлов → кандидат KR-057 «Форшахта»). Внимание: `flow.mjs` меняет решения в БД
+  стенда; чистый стенд — удалить `service/data/` и перезапустить backend (объекты пакета и протоколы v1 создадутся заново).
+- **docker-compose** `service/docker-compose.yml` (rabbitmq с пользователем inspector — guest только с localhost;
+  ml-worker из `Dockerfile.worker`; backend из `service/backend/Dockerfile`, multi-stage с интерфейсом). Пути — `.env`
+  (`service/.env` — локальная раскладка, `ML_DIR=..`; `.env.example` — раскладка командного репозитория). **Не собирался.**
+- **Тесты** `cd service/backend && npm test` — 11 интеграционных (временная БД, без ML).
+- **Документы:** `docs/Инспектор_ИИ_сервис.md` (архитектура, API, статусы, БД, безопасность, замеры, соответствие ТЗ,
+  что проверено), `docs/Лицензии.md`, `service/README.md` — **корневой README командного репозитория** (раскладка:
+  `backend/`, `frontend/`, `ml-service/`, `docker-compose.yml`), скриншоты — `docs/img/`.
+- **28.09, вечер:** перенос решений при дозагрузке — если не изменились метка и ПД / РД (изменение только ИД → решение
+  переносится с `decisions.carried_note`, «данные ИД изменились — проверьте»; ТЗ 9.3 «без сброса верификации»); ссылка
+  «API» в шапке — только admin и ml_engineer. **Демо для ручной проверки** — `демо_новый_объект/` (в .gitignore):
+  13 PDF Новослободской по стадиям + 3 плохих файла, `ЗАПОЛНЕНИЕ.md` — поля формы, шаги и ожидаемый результат (прогнан
+  на временном экземпляре: ПД+РД → v1 за 21 с, кандидат KR-057 «Форшахта», 13 «нет нарушения», 3 ручные, 106 нет документа,
+  16 не проверялось; дозагрузка ИД → v2 за 18 с, решение перенесено с пометкой, «Стена в грунте» ИД B25). Скрипт того же
+  сценария через API — `D:\hakaton\ui_check\demo_scenario.mjs` (`BASE=http://localhost:8091`).
+- **GPU:** сервис GPU не использует (воркер docker-compose — python-slim без CUDA; `ml.run` OCR не запускает, сканы —
+  из кэша). Для загруженных объектов со сканами значения ИД не извлекаются — нужен OCR в `ml.run` (очередь, п. 7г).
+- **Дальше:** перенести в командный репозиторий (раскладка выше; ветку и пуш — согласовать с Сашей), Release с архивами,
+  сборка Docker тем, у кого он есть, презентация и скринкаст.
 
 ## Файловая структура `D:\hakaton\ltc`
 
@@ -120,9 +166,19 @@ TRAIN_data/                   data/ из TRAIN-архива: public_gold_checks.
 - **Командный репозиторий (с 27.09):** `git@github.com:midudar/ctrl_z_hackathon.git` (remote `team`; в `main` команды —
   только README, в `dev` — ещё PDF ТЗ, `M_exploration` — эксперименты с OCR). ML-часть — ветка **`ml`** (от `team/dev`),
   папка **`ml-service/`**, отдельный worktree `D:\hakaton\team_ml`. Туда идут **снимки** локального `main`, без нашей
-  истории (в старых коммитах — ссылка на Google Drive со сканами организаторов). Обновить:
-  `cd /d/hakaton/team_ml && git rm -r -q ml-service && git read-tree --prefix=ml-service/ -u main && git commit -m … &&
-  git push` (коммиты локального `main` сначала закоммитить в `D:\hakaton\ltc`). SSH — аккаунт VSProgram. Архивы
+  истории (в старых коммитах — ссылка на Google Drive со сканами организаторов). **С 28.09 раскладка ветки `ml`:** в корне
+  `README.md`, `docker-compose.yml`, `.env.example`, `.dockerignore`, `.gitignore` (из `service/`), `backend/`, `frontend/`
+  (из `service/backend`, `service/frontend`), `ml-service/` (локальный `main` без `service/`). Обновить (сначала
+  закоммитить локальный `main` в `D:\hakaton\ltc`):
+  ```bash
+  cd /d/hakaton/team_ml
+  git rm -r -q --ignore-unmatch ml-service backend frontend docker-compose.yml .env.example .dockerignore .gitignore
+  git read-tree --prefix=ml-service/ -u main && git rm -r -q ml-service/service
+  git read-tree --prefix=backend/ -u main:service/backend && git read-tree --prefix=frontend/ -u main:service/frontend
+  for f in README.md docker-compose.yml .env.example .dockerignore .gitignore; do git show main:service/$f > $f; git add $f; done
+  git commit -m "…" && git push
+  ```
+  SSH — аккаунт VSProgram. Архивы
   `handover/inspector_ml_assets.zip` (кэш + модели) и `handover/inspector_ml_slides.zip` (слайды) — в GitHub Releases
   командного репозитория, выкладывает Саша через сайт (утилиты `gh` нет).
 
@@ -740,7 +796,7 @@ Tesseract теряет скобку, по которой `field_fuzzy` обре�
 - **В `ml.run` нет прохода OCR по сканам.** Код обоих проходов (полосы → тип страницы → полный OCR нужных
   страниц) написан, но живёт в `colab/` и `page_kinds.py` отдельно от пайплайна.
 - Dockerfile есть, но **образ ни разу не собирался**: Docker на рабочем ноутбуке не установлен.
-- **Протокола по образцу Приложения 2 нет** (ТЗ требует его как обязательный образец, см. «Архитектура пайплайна»,
+- ~~Протокола по образцу Приложения 2 нет~~ — **сделан 28.09 в сервисе** (`ml/protocol.py`). Было: (ТЗ требует его как обязательный образец, см. «Архитектура пайплайна»,
   этап 5): `review_pdf.py` делает только карточки кандидатов.
 
 ### ИД тестового объекта — возможно, главный резерв (21.09)
