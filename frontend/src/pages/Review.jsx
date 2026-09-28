@@ -151,6 +151,13 @@ export default function Review() {
     if (!comment.trim()) setComment(reference?.reason_codes?.[code] || code);
   }
 
+  // Выход из отклонения: комментарий, подставленный из причины, не должен уйти вместе с другим решением
+  function cancelReject() {
+    if (reason && comment === (reference?.reason_codes?.[reason] || reason)) setComment('');
+    setMode(null);
+    setReason(null);
+  }
+
   // Клавиши
   useEffect(() => {
     const h = (e) => {
@@ -160,7 +167,7 @@ export default function Review() {
       else if (decidable && e.key === '1') decide('CONFIRMED_VIOLATION');
       else if (decidable && e.key === '2') setMode('reject');
       else if (decidable && e.key === '3') decide('CLARIFICATION_REQUIRED');
-      else if (e.key === 'Escape') setMode(null);
+      else if (e.key === 'Escape') cancelReject();
     };
     window.addEventListener('keydown', h);
     return () => window.removeEventListener('keydown', h);
@@ -267,7 +274,7 @@ export default function Review() {
                       <textarea ref={commentRef} rows={3} value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Обоснование отклонения" />
                     </label>
                     <div className="form-actions">
-                      <button type="button" className="btn" onClick={() => { setMode(null); setReason(null); }}>Назад</button>
+                      <button type="button" className="btn" onClick={cancelReject}>Назад</button>
                       <button type="button" className="btn btn-primary" disabled={busy || !reason || !comment.trim()} onClick={() => decide('NEGATIVE_VERIFIED')}>Сохранить отклонение</button>
                     </div>
                   </div>

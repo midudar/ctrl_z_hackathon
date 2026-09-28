@@ -72,6 +72,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **В работе:** образ жюри (`ml-service/Dockerfile`, база pytorch ~3,5 ГБ качается в фоне, `D:\wsl\jury_pull.log`) →
   `docker build` + прогон Речникова → сверка с `out/submission_OBJ-RECHNIKOV-7-7.json` (цепочка `D:\wsl\jury_run.sh`,
   логи `jury_chain.log`, `jury_build.log`, `jury_run.log`, ответ — `D:\wsl\jury_out\`).
+- **29.09, ночь:** руководство пользователя `docs/Инспектор_ИИ_руководство_пользователя.md` (16 разделов, 19 скриншотов в
+  `docs/img/guide/`; съёмка — `D:\hakaton\ui_check\guide_shots.mjs` на временном стенде: `PORT=8092 DATA_DIR=D:/wsl/guide_data`,
+  чистая БД, демо-объект из `демо_новый_объект/`); ссылки — README и документ сервиса. Попутно исправлено: в карточке
+  «Назад» / Esc из отклонения оставлял подставленный комментарий причины, и он сохранялся с подтверждением.
 - **28.09, 23:40 (Саша):** все три стенда остановлены (8080, 8090, 8091; тома Docker сохранены — поднять:
   `docker compose up -d` в `~/ctrl_z`). **Ветку `ml` команда сольёт в `main` сама — «ml станет main».** Release: тег новый
   (`v1.0`), **target — `ml`** (в `main` кода нет). ⚠ В `inspector_ml_assets.zip` 910 страниц OCR сканов актов ИД Речникова,
