@@ -2334,11 +2334,12 @@
           "F0326:ВП-7-14 участок.bak",
           "F0326:Генплан.bak",
           "F0326:СПИС.bak",
+          "F0335:21‬‬‬‬‬ - Сводная ведомость материалов.bak",
           "F0339:plot.log",
-          "F0339:01-07.23-14-��-��0.bak",
-          "F0412:������������.bak"
+          "F0339:01-07.23-14-РД-КЖ0.bak",
+          "F0412:Спецификация.bak"
         ],
-        "inside_archives_count": 6
+        "inside_archives_count": 7
       },
       {
         "type": "PDF_WITHOUT_MACHINE_READABLE_TEXT",

@@ -69,9 +69,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   **Найдено и исправлено:** без архива падал `COPY out/cach[e]` → `COPY ou[t]/cach[e]` (шаблон на каждой части пути).
 - **Коммиты:** локальный `main` — `5a97037` (документация с итогами Docker); снимок в `team_ml` — `69232c1` и дальше;
   **пуш в `ml` — после проверки образа жюри** (Саша разрешил только ветку `ml`).
-- **В работе:** образ жюри (`ml-service/Dockerfile`, база pytorch ~3,5 ГБ качается в фоне, `D:\wsl\jury_pull.log`) →
-  `docker build` + прогон Речникова → сверка с `out/submission_OBJ-RECHNIKOV-7-7.json` (цепочка `D:\wsl\jury_run.sh`,
-  логи `jury_chain.log`, `jury_build.log`, `jury_run.log`, ответ — `D:\wsl\jury_out\`).
+- **Образ жюри (29.09, ночь):** база pytorch скачана (57 мин), `docker build` из чистого клона — **153 с, 10,1 ГБ**
+  (torch из базы, easyocr 1.7.2, pymupdf 1.28.2, opencv 5.0; кэш и модели скопированы новым шаблоном). Прогон Речникова
+  в образе (`docker run … inspector-ml OBJ-RECHNIKOV-7-7`, документы через `/mnt/d`): **все треки дали те же числа
+  проверок, что и прогон 28.09, рамки 54 из 54**; медленно из-за чтения 6,5 ГБ через 9p (КР и ИД 805 с против 94 с).
+  **Итог (00:47):** прогон 31 мин (через 9p; на Linux-хосте ~4 мин), `checks` — **141 из 141 идентичны во всех полях**
+  (метки, значения, страницы, рамки, фрагменты), `validate` OK, в `/output` только ответ и отчёт целостности. Отличие —
+  только `document_integrity`: в Linux 7 временных файлов внутри архивов РД против 6 на Windows (Windows `tar` не читает
+  русские имена в .rar / .7z и недочитал `F0335`) → `out/submission_OBJ-RECHNIKOV-7-7.json` и `integrity_…` заменены
+  ответом образа (коммит `e7af5b1`). Сверка — `python D:\wsl\compare.py <ответ образа> <эталон>`.
+  Скрипты — `D:\wsl\jury_run.sh` (цепочка), логи `jury_chain.log`, `jury_build.log`, `jury_run.log`.
 - **29.09, ночь:** руководство пользователя `docs/Инспектор_ИИ_руководство_пользователя.md` (16 разделов, 19 скриншотов в
   `docs/img/guide/`; съёмка — `D:\hakaton\ui_check\guide_shots.mjs` на временном стенде: `PORT=8092 DATA_DIR=D:/wsl/guide_data`,
   чистая БД, демо-объект из `демо_новый_объект/`); ссылки — README и документ сервиса. Попутно исправлено: в карточке
