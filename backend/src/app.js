@@ -55,6 +55,8 @@ export function createApp() {
     res.status(dbOk ? 200 : 503).json({
       status: dbOk ? 'ok' : 'degraded', service: config.serviceName, version: config.version, queue: queueMode(),
       ml: config.mlHttpUrl ? 'http' : 'process', time: new Date().toISOString(),
+      // подсказку «пароль = логин» на странице входа показываем, только пока пароли стенда не сменены
+      demo_accounts: config.defaultUsers.every((u) => u.password === u.login),
     });
   });
   app.get('/api/v1/metrics', (_req, res) => {

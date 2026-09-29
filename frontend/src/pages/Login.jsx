@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { api, setToken } from '../api.js';
 import { useAuth } from '../App.jsx';
@@ -14,6 +14,8 @@ export default function Login() {
   const { setUser } = useAuth();
   const [login, setLogin] = useState('inspector');
   const [password, setPassword] = useState('');
+  const [demo, setDemo] = useState(false);             // пароли стенда по умолчанию — показать подсказку
+  useEffect(() => { api('/health').then((h) => setDemo(Boolean(h.demo_accounts))).catch(() => {}); }, []);
   const [error, setError] = useState(null);
   const [busy, setBusy] = useState(false);
   const navigate = useNavigate();
@@ -55,7 +57,7 @@ export default function Login() {
           {error && <div className="note note-error">{error}</div>}
           <button className="btn btn-primary btn-block" disabled={busy}>{busy ? 'Вход…' : 'Войти'}</button>
         </form>
-        <div className="login-demo">
+        {demo && <div className="login-demo">
           <p className="muted small">Учётные записи стенда (пароль совпадает с логином):</p>
           <ul>
             {DEMO.map(([l, d]) => (
@@ -65,7 +67,7 @@ export default function Login() {
               </li>
             ))}
           </ul>
-        </div>
+        </div>}
         <p className="muted small login-foot">Система не выносит вердикт: она готовит кандидатов в нарушения с доказательствами, решение принимает инспектор.</p>
       </div>
     </div>
