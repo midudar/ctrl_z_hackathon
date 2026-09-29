@@ -7,7 +7,7 @@ name: inspector
 
 services:
   rabbitmq:
-    image: rabbitmq:3.13-management-alpine
+    image: rabbitmq:3.13-management-alpine@sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281
     environment:
       # guest в RabbitMQ пускают только с localhost — для соседних контейнеров нужен свой пользователь
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-inspector}

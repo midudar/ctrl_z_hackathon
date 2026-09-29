@@ -15,7 +15,7 @@
 # листов ОВ (EasyOCR) лежит в образе — кэш /app/cache, ключ — SHA-256 файла. Страницы без кэша читаются только
 # текстовым слоем. Базовый образ несёт CUDA runtime и torch; драйвер NVIDIA в образ класть нельзя, он с хоста.
 # Контекст сборки ограничен .dockerignore (в папке проекта ~42 ГБ данных).
-FROM pytorch/pytorch:2.4.1-cuda12.1-cudnn9-runtime
+FROM pytorch/pytorch:2.4.1-cuda12.1-cudnn9-runtime@sha256:ac7c098a81512e719afa5d2d497f812d7db3498f340a4b819c69cb7b3b257126
 
 # fonts-dejavu-core — кириллица в PDF-карточках доказательств (ml/paths.py: font_file)
 # libarchive-tools — bsdtar: список файлов внутри архивов .7z и .rar для отчёта целостности (ml/integrity.py);

@@ -85,8 +85,7 @@ export default function Review() {
   const [protocol, setProtocol] = useState(null);
   const [list, setList] = useState([]);
   const [error, setError] = useState(null);
-  const [mode, setMode] = useState(null);              // null | 'reject'
-  const [reason, setReason] = useState(null);
+  const [reason, setReason] = useState(null);         // выбранная причина отклонения (причины видны сразу)
   const [comment, setComment] = useState('');
   const [recommendation, setRecommendation] = useState('');
   const [busy, setBusy] = useState(false);
@@ -99,7 +98,6 @@ export default function Review() {
     const [c, p] = await Promise.all([api(`/protocols/${protocolId}/checks/${checkId}`), api(`/protocols/${protocolId}`)]);
     setCard(c);
     setProtocol(p);
-    setMode(null);
     setReason(null);
     setComment('');
     setRecommendation(c.decision?.recommendation || c.recommendation_template);
@@ -122,6 +120,8 @@ export default function Review() {
     return order.find((r) => !r.decision && r.check_id !== exclude)?.check_id ?? null;
   }, [list, index]);
 
+  const reasonText = (code) => reference?.reason_codes?.[code] || code;
+
   async function decide(status) {
     if (!card) return;
     if (status === 'NEGATIVE_VERIFIED' && (!reason || !comment.trim())) { commentRef.current?.focus(); return; }
@@ -129,7 +129,9 @@ export default function Review() {
     try {
       const body = { status };
       if (status === 'NEGATIVE_VERIFIED') body.reason_code = reason;
-      if (comment.trim()) body.comment = comment.trim();
+      // комментарий, подставленный из причины отклонения, не уходит вместе с другим решением
+      const autoComment = reason && comment === reasonText(reason);
+      if (comment.trim() && (status === 'NEGATIVE_VERIFIED' || !autoComment)) body.comment = comment.trim();
       if (status === 'CONFIRMED_VIOLATION' && recommendation.trim()) body.recommendation = recommendation.trim();
       await api(`/protocols/${protocolId}/checks/${card.check_id}/decision`, { method: 'PUT', body });
       const label = { CONFIRMED_VIOLATION: 'Нарушение подтверждено', NEGATIVE_VERIFIED: 'Кандидат отклонён', CLARIFICATION_REQUIRED: 'Отправлено на уточнение' }[status];
@@ -146,15 +148,15 @@ export default function Review() {
     try { await api(`/protocols/${protocolId}/checks/${card.check_id}/decision`, { method: 'DELETE' }); toast('Решение отменено'); await load(); } catch (e) { toast(e.message, 'error'); }
   }
 
+  // Отклонение — 3 действия от открытия карточки: причина → «Отклонить». Комментарий обязателен по ТЗ и подставляется
+  // из причины (при смене причины подставленный текст меняется, написанный инспектором — нет)
   function pickReason(code) {
+    if (!comment.trim() || (reason && comment === reasonText(reason))) setComment(reasonText(code));
     setReason(code);
-    if (!comment.trim()) setComment(reference?.reason_codes?.[code] || code);
   }
 
-  // Выход из отклонения: комментарий, подставленный из причины, не должен уйти вместе с другим решением
   function cancelReject() {
-    if (reason && comment === (reference?.reason_codes?.[reason] || reason)) setComment('');
-    setMode(null);
+    if (reason && comment === reasonText(reason)) setComment('');
     setReason(null);
   }
 
@@ -165,7 +167,7 @@ export default function Review() {
       if (e.key === 'ArrowLeft' && prev) go(prev);
       else if (e.key === 'ArrowRight' && next) go(next);
       else if (decidable && e.key === '1') decide('CONFIRMED_VIOLATION');
-      else if (decidable && e.key === '2') setMode('reject');
+      else if (decidable && e.key === '2') { if (reason) decide('NEGATIVE_VERIFIED'); else document.querySelector('.reasons .chip')?.focus(); }
       else if (decidable && e.key === '3') decide('CLARIFICATION_REQUIRED');
       else if (e.key === 'Escape') cancelReject();
     };
@@ -250,40 +252,31 @@ export default function Review() {
 
             {decidable && (
               <>
-                {mode !== 'reject' ? (
-                  <div className="decision-buttons">
-                    <button type="button" className="btn btn-danger btn-lg" disabled={busy} onClick={() => decide('CONFIRMED_VIOLATION')}>
-                      Подтвердить нарушение <kbd>1</kbd>
-                    </button>
-                    <button type="button" className="btn btn-lg" disabled={busy} onClick={() => setMode('reject')}>
+                <div className="decision-buttons">
+                  <button type="button" className="btn btn-danger btn-lg" disabled={busy} onClick={() => decide('CONFIRMED_VIOLATION')}>
+                    Подтвердить нарушение <kbd>1</kbd>
+                  </button>
+                  <button type="button" className="btn btn-warn btn-lg" disabled={busy} onClick={() => decide('CLARIFICATION_REQUIRED')}>
+                    Требует уточнения <kbd>3</kbd>
+                  </button>
+                </div>
+                <div className="reject-box">
+                  <div className="small"><b>Отклонить</b> — причина (обязательно):</div>
+                  <div className="reasons">
+                    {Object.entries(reasons).map(([code, label]) => (
+                      <button type="button" key={code} className={`chip ${reason === code ? 'on' : ''}`} onClick={() => pickReason(code)}>{label}</button>
+                    ))}
+                  </div>
+                  <div className="form-actions">
+                    {reason && <button type="button" className="btn" onClick={cancelReject}>Сбросить</button>}
+                    <button type="button" className="btn btn-lg" disabled={busy || !reason || !comment.trim()} onClick={() => decide('NEGATIVE_VERIFIED')}>
                       Отклонить <kbd>2</kbd>
                     </button>
-                    <button type="button" className="btn btn-warn btn-lg" disabled={busy} onClick={() => decide('CLARIFICATION_REQUIRED')}>
-                      Требует уточнения <kbd>3</kbd>
-                    </button>
                   </div>
-                ) : (
-                  <div className="reject-box">
-                    <div className="small"><b>Причина отклонения</b> (обязательно):</div>
-                    <div className="reasons">
-                      {Object.entries(reasons).map(([code, label]) => (
-                        <button type="button" key={code} className={`chip ${reason === code ? 'on' : ''}`} onClick={() => pickReason(code)}>{label}</button>
-                      ))}
-                    </div>
-                    <label className="small comment-label">Комментарий (обязательно; подставляется из причины — дополните при необходимости)
-                      <textarea ref={commentRef} rows={3} value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Обоснование отклонения" />
-                    </label>
-                    <div className="form-actions">
-                      <button type="button" className="btn" onClick={cancelReject}>Назад</button>
-                      <button type="button" className="btn btn-primary" disabled={busy || !reason || !comment.trim()} onClick={() => decide('NEGATIVE_VERIFIED')}>Сохранить отклонение</button>
-                    </div>
-                  </div>
-                )}
-                {mode !== 'reject' && (
-                  <label className="small comment-label">Комментарий (необязательно)
-                    <textarea rows={3} value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Обоснование решения" />
-                  </label>
-                )}
+                </div>
+                <label className="small comment-label">Комментарий {reason ? '(для отклонения обязателен; подставлен из причины — дополните при необходимости)' : '(необязательно)'}
+                  <textarea ref={commentRef} rows={3} value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Обоснование решения" />
+                </label>
                 {card.kind !== 'negative' && (
                   <details className="small">
                     <summary>Рекомендация в резолютивную часть протокола</summary>
@@ -305,7 +298,7 @@ export default function Review() {
             <p className="muted tiny">Редакции: система сравнивает только действующие (последние) редакции документов; устаревшие исключены — см. «Комплект документов».</p>
             <p className="muted tiny">Группа доказательств: <code>{card.evidence_group_id}</code> · статус системы: {card.finding_status}</p>
           </section>
-          <p className="muted tiny keys">Клавиши: <kbd>1</kbd> подтвердить · <kbd>2</kbd> отклонить · <kbd>3</kbd> уточнение · <kbd>←</kbd> <kbd>→</kbd> навигация</p>
+          <p className="muted tiny keys">Клавиши: <kbd>1</kbd> подтвердить · <kbd>2</kbd> отклонить (после выбора причины) · <kbd>3</kbd> уточнение · <kbd>Esc</kbd> сбросить причину · <kbd>←</kbd> <kbd>→</kbd> навигация</p>
         </aside>
       </div>
     </div>
